@@ -23,10 +23,45 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    while True:
+        handle_menu()
+        try:
+            if choose() == 'back_to_main':
+                break
+        except KeyError as err:
+            ui.print_error_message(err)
 
-    # you code
 
-    pass
+def choose():
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    if option == "1":
+        show_table(table)
+    elif option == "2":
+        add(table)
+    elif option == "3":
+        remove(table, id_)
+    elif option == "4":
+        update(table, id_)
+    elif option == "5":
+        get_longest_name_id(table)
+    elif option == "6":
+        get_subscribed_emails(table)
+    elif option == "0":
+        return 'back_to_main'
+    else:
+        raise KeyError("There is no such option.")
+
+
+def handle_menu():
+    options = ["Show table",
+               "Add to table",
+               "Remove from table",
+               "Update table",
+               "What is the id of the customer with the longest name?",
+               "Which customers has subscribed to the newsletter?"]
+
+    ui.print_menu("----> Customer Relationship Management (CRM)", options, "Go back to the main menu")
 
 
 # print the default table of records from the file
@@ -79,7 +114,7 @@ def update(table, id_):
 # the question: What is the id of the customer with the longest name ?
 # return type: string (id) - if there are more than one longest name, return the first of ascending alphabetical order
 def get_longest_name_id(table):
-    
+
     customer_id = []
     for name in table:
         customer_id.append(num[1],num[2])
@@ -99,5 +134,3 @@ def get_subscribed_emails(table):
     pass
 # table = data_manager.get_table_from_file('customers.csv')
 # print(table)
-
-
