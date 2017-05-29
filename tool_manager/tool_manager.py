@@ -24,10 +24,45 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    while True:
+        handle_menu()
+        try:
+            if choose() == 'back_to_main':
+                break
+        except KeyError as err:
+            ui.print_error_message(err)
 
-    # you code
 
-    pass
+def choose():
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    if option == "1":
+        show_table(table)
+    elif option == "2":
+        add(table)
+    elif option == "3":
+        remove(table, id_)
+    elif option == "4":
+        update(table, id_)
+    elif option == "5":
+        get_available_tools(table)
+    elif option == "6":
+        get_average_durability_by_manufacturers(table)
+    elif option == "0":
+        return 'back_to_main'
+    else:
+        raise KeyError("There is no such option.")
+
+
+def handle_menu():
+    options = ["Show table",
+               "Add to table",
+               "Remove from table",
+               "Update table",
+               "Which items has not yet exceeded their durability?",
+               "What are the average durability time for each manufacturer?"]
+
+    ui.print_menu("----> Tool manager", options, "Go back to the main menu")
 
 
 # print the default table of records from the file
