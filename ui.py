@@ -12,10 +12,14 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
+    line = '|-----------------------------------|'
 
-    # your code
+    print('/-----------------------------------\')
 
-    pass
+    for i in range(len(table)):
+        print(start)
+
+    print('\-----------------------------------/')
 
 
 # This function needs to print result of the special functions
