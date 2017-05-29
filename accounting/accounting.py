@@ -26,8 +26,6 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 #
 def start_module():
 
-    # you code
-
     pass
 
 
@@ -39,7 +37,6 @@ def show_table(table):
     # your code
 
     pass
-
 
 # Ask a new record as an input from the user than add it to @table, than return @table
 #
@@ -93,3 +90,6 @@ def avg_amount(table, year):
     # your code
 
     pass
+
+
+start_module()
