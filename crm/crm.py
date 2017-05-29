@@ -79,6 +79,11 @@ def update(table, id_):
 # the question: What is the id of the customer with the longest name ?
 # return type: string (id) - if there are more than one longest name, return the first of ascending alphabetical order
 def get_longest_name_id(table):
+    
+    customer_id = []
+    for name in table:
+        customer_id.append(num[1],num[2])
+
 
     # your code
 
@@ -92,3 +97,7 @@ def get_subscribed_emails(table):
     # your code
 
     pass
+# table = data_manager.get_table_from_file('customers.csv')
+# print(table)
+
+
