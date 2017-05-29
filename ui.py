@@ -12,14 +12,10 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
-    line = '|-----------------------------------|'
 
-    print('/-----------------------------------\')
+    # your code
 
-    for i in range(len(table)):
-        print(start)
-
-    print('\-----------------------------------/')
+    pass
 
 
 # This function needs to print result of the special functions
@@ -47,10 +43,10 @@ def print_result(result, label):
 # @list_options: list of strings - the options in the menu
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
 def print_menu(title, list_options, exit_message):
-
-    # your code
-
-    pass
+    print(title)
+    for i in range(1, len(list_options)):
+        print('({}) {}'.format(i, list_options[i-1]))
+    print('(0)', exit_message)
 
 
 # This function gets a list of inputs from the user by the terminal
