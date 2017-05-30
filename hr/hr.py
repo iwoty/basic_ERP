@@ -110,9 +110,10 @@ def update(table, id_):
 
 # the question: Who is the oldest person ?
 # return type: list of strings (name or names if there are two more with the same value)
+
 def get_oldest_person(table):
-    """
-    table = data_manager.get_table_from_file('hr/persons.csv')
+
+    #table = data_manager.get_table_from_file('hr/persons.csv')
     age = []
     for line in table:
         age.append(int(line[2]))
@@ -126,40 +127,6 @@ def get_oldest_person(table):
             oldest_person.append(lista[1])
 
     return oldest_person
-    """
-    pass
-
-
-
-    #print(oldest)
-    """age = {}
-    for lista in table:
-        key = lista[2]
-        key = int(key)
-        value = lista[1]
-        age[key] = value
-    print(age)
-    oldest = min(age.keys())
-    print(age.keys())
-    old = []
-    for year in age.keys():
-        if year == oldest:
-            old.append(age[year])
-    print(old)"""
-
-
-
-    #age.values() =
-    #table = bubble_sort(age.values())
-    """oldest = []
-    for i in table:
-        if table[0] == table[i]:
-            oldest.append(table[i])
-    print(old)"""
-
-
-    #return old
-
 
 
 
@@ -167,10 +134,77 @@ def get_oldest_person(table):
 # the question: Who is the closest to the average age ?
 # return type: list of strings (name or names if there are two more with the same value)
 def get_persons_closest_to_average(table):
+    average_age = []
+    for line in table:
+        average_age.append(int(line[2]))
 
+    ave_numbers = 0
+
+    for i in average_age:
+        ave_numbers+=i
+        average = ave_numbers/len(average_age)
+
+    year_delta = []
+
+    for year in average_age:
+        delta = year - average
+        delta = abs(delta)
+        year_delta.append(delta)
+        mini = min(year_delta)
+
+        close_to_ave = []
+        index = 0
+
+    for delta in year_delta:
+        index += 1
+        if delta == mini:
+            index_ave = index-1
+            close_to_ave.append(table[index_ave][1])
+
+    return close_to_ave
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #for i in range(len(average_age)):
+        #    if average_age[i]
+    #average_age.append(average)
+
+    #numbers = bubble_sort(average_age)
+
+
+
+
+
+
+
+def bubble_sort(numbers):
+
+    amount = len(numbers)-1
+    for step in range(0, amount):
+        replacement = True
+        for index in range(0, amount-step):
+            if numbers[index]>numbers[index+1]:
+                numbers[index], numbers[index+1] = numbers[index+1], numbers[index]
+                replacement = False
+        if replacement:
+            return numbers
     # your code
 
-    pass
+#get_persons_closest_to_average(table)
 
 #get_oldest_person()
 #print(bubble_sort(tab))
