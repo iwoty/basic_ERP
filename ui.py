@@ -13,9 +13,38 @@
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
 
-    # your code
+    cell_widths = []
+    columns = []
 
-    pass
+    for i in range(len(title_list)):
+        columns.append([])
+        for j in range(len(table)):
+            columns[i].append(table[j][i])  # columns - nested list with lists of elements of table columns
+        cell_widths.append(max(map(len, columns[i])))   # cell_widths - list with max len of str in table columns
+    print(columns)
+    print(cell_widths)
+
+    width_of_table = -2
+    for width in cell_widths:
+        width_of_table += width     # sum of the longest string length from row in table
+    print(width_of_table)
+    '''
+    row_to_print = '|'
+    for i in range(len(title_list)):
+        for j in range(len(table)):
+            row_to_print += ' ' + ' '*round(cell_widths[i]-len(table[j][i])/2) + '{}' + ' '*round(cell_widths[i]-len(table[j][i])/2) + '|'
+    '''
+    row_to_print = '|'
+    for i in range(len(table)):
+        for j in range(len(title_list)):
+            row_to_print += ' ' + ' '*round(cell_widths[j]-len(table[j][i])/2) + '{}' + ' '*round(cell_widths[j]-len(table[j][i])/2) + '|'
+
+    print(row_to_print)
+
+    print('/' + '-'*width_of_table + '\\')
+    for row in table:
+        print(row_to_print)
+    print('\\' + '-'*width_of_table + '/')
 
 
 # This function needs to print result of the special functions
