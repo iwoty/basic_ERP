@@ -15,10 +15,9 @@ def print_table(table, title_list):
     width_of_table = len(title_list) - 1
     for title in title_list:
         width_of_table += len(title)
-    print(width_of_table)
     print('/' + '-'*width_of_table + '\\')
-
-
+    for row in table:
+        print('|' + ' | '.join(row) + '|')
     print('\\' + '-'*width_of_table + '/')
 
 
