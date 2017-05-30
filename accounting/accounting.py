@@ -72,7 +72,9 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-    print(table)
+    title_list = ['id', 'month', 'day', 'year', 'type', 'amount']
+    ui.print_table(table, title_list)
+
 
 # Ask a new record as an input from the user than add it to @table, than return @table
 #

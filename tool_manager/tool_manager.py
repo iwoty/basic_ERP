@@ -34,6 +34,7 @@ def start_module():
 
 
 def choose():
+    table = data_manager.get_table_from_file('tool_manager/tools.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
@@ -69,10 +70,8 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-
-    # your code
-
-    pass
+    title_list = ['id', 'name', 'manufacturer', 'purchase_date', 'durability']
+    ui.print_table(table, title_list)
 
 
 # Ask a new record as an input from the user than add it to @table, than return @table
