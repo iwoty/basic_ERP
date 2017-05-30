@@ -112,7 +112,7 @@ def update(table, id_):
 
 # the question: Who is the oldest person ?
 # return type: list of strings (name or names if there are two more with the same value)
-def get_oldest_person():
+def get_oldest_person(table):
     """
     table = data_manager.get_table_from_file('hr/persons.csv')
     age = []
