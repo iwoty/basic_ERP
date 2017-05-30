@@ -26,10 +26,45 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    while True:
+        handle_menu()
+        try:
+            if choose() == 'back_to_main':
+                break
+        except KeyError as err:
+            ui.print_error_message(err)
 
-    # you code
 
-    pass
+def choose():
+    inputs = ui.get_inputs(["Please enter a number: "], "")
+    option = inputs[0]
+    if option == "1":
+        show_table(table)
+    elif option == "2":
+        add(table)
+    elif option == "3":
+        remove(table, id_)
+    elif option == "4":
+        update(table, id_)
+    elif option == "5":
+        get_lowest_price_item_id(table)
+    elif option == "6":
+        get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
+    elif option == "0":
+        return 'back_to_main'
+    else:
+        raise KeyError("There is no such option.")
+
+
+def handle_menu():
+    options = ["Show table",
+               "Add to table",
+               "Remove from table",
+               "Update table",
+               "What is the id of the item that sold for the lowest price?",
+               "Which items are sold between two given dates ? (from_date < birth_date < to_date)"]
+
+    ui.print_menu("----> Selling manager", options, "Go back to the main menu")
 
 
 # print the default table of records from the file
