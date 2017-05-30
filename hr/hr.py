@@ -152,13 +152,17 @@ def get_persons_closest_to_average(table):
         year_delta.append(delta)
         mini = min(year_delta)
 
+        close_to_ave = []
         index = 0
 
     for delta in year_delta:
         index += 1
         if delta == mini:
             index_ave = index-1
-    return table[index_ave][1]
+            close_to_ave.append(table[index_ave][1])
+
+    return close_to_ave
+
 
 
 
