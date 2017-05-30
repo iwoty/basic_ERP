@@ -33,6 +33,7 @@ def start_module():
 
 
 def choose():
+    table = data_manager.get_table_from_file('crm/customers.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
@@ -122,7 +123,7 @@ def get_longest_name_id(table):
     Returns
     -------
     customer_id : string
-    ''' 
+    '''
 
     dic_customer_id = {}
     list_of_longest_names = []
@@ -139,7 +140,7 @@ def get_longest_name_id(table):
     alphabetical_longest_name = min(list_of_longest_names)
 
     customer_id = (dic_customer_id[alphabetical_longest_name])
-    
+
     print(customer_id)
 
     return customer_id
