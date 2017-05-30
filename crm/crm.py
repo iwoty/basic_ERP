@@ -79,15 +79,33 @@ def update(table, id_):
 # the question: What is the id of the customer with the longest name ?
 # return type: string (id) - if there are more than one longest name, return the first of ascending alphabetical order
 def get_longest_name_id(table):
+    '''Returns id of longest customer name
+    Parameters
+    ----------
+    table : list
+
+    Returns
+    -------
+    customer_id : string
+    ''' 
     
-    customer_id = []
-    for name in table:
-        customer_id.append(num[1],num[2])
+    dic_customer_id = {}
+    list_of_longest_names = []
 
+    for information in table:
+        dic_customer_id[information[1]] = information[0]
 
-    # your code
+    longest_name = max(len(key) for key in dic_customer_id.keys())
 
-    pass
+    for key in dic_customer_id.keys():
+        if len(key) == longest_name:
+            list_of_longest_names.append(key)
+
+    alphabetical_longest_name = min(list_of_longest_names)
+
+    customer_id = (dic_customer_id[alphabetical_longest_name])
+
+    return customer_id
 
 
 # the question: Which customers has subscribed to the newsletter?
