@@ -70,10 +70,8 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-
-    # your code
-
-    pass
+    title_list = ['id', 'title', 'manufacturer', 'price', 'in_stock']
+    ui.print_table(table, title_list)
 
 
 # Ask a new record as an input from the user than add it to @table, than return @table
