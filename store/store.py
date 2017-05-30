@@ -137,10 +137,18 @@ def get_counts_by_manufacturers(table):
 # return type: number
 def get_average_by_manufacturer(table, manufacturer):
 
-    # your code
+    counter = 0
+    amount_in_shop = 0
 
-    pass
+    for product in table:
+        if product[2] == manufacturer:
+            counter += 1
+            amount_in_shop = amount_in_shop + int(product[4])
+
+    average = amount_in_shop / counter
+ 
+    return average
 
 # table = data_manager.get_table_from_file('games.csv')
-
-# get_counts_by_manufacturers(table)
+# get_average_by_manufacturer(table, 'Ensemble Studios')
+# # get_counts_by_manufacturers(table)
