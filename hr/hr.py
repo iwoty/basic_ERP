@@ -22,45 +22,10 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
-    while True:
-        handle_menu()
-        try:
-            if choose() == 'back_to_main':
-                break
-        except KeyError as err:
-            ui.print_error_message(err)
 
+    # you code
 
-def choose():
-    inputs = ui.get_inputs(["Please enter a number: "], "")
-    option = inputs[0]
-    if option == "1":
-        show_table(table)
-    elif option == "2":
-        add(table)
-    elif option == "3":
-        remove(table, id_)
-    elif option == "4":
-        update(table, id_)
-    elif option == "5":
-        get_oldest_person(table)
-    elif option == "6":
-        get_persons_closest_to_average(table)
-    elif option == "0":
-        return 'back_to_main'
-    else:
-        raise KeyError("There is no such option.")
-
-
-def handle_menu():
-    options = ["Show table",
-               "Add to table",
-               "Remove from table",
-               "Update table",
-               "Who is the oldest person?",
-               "Who is the closest to the average age?"]
-
-    ui.print_menu("----> Human resources manager", options, "Go back to the main menu")
+    pass
 
 
 # print the default table of records from the file
@@ -112,7 +77,7 @@ def update(table, id_):
 # the question: Who is the oldest person ?
 # return type: list of strings (name or names if there are two more with the same value)
 def get_oldest_person():
-    """
+
     table = data_manager.get_table_from_file('hr/persons.csv')
     age = []
     for line in table:
@@ -127,8 +92,6 @@ def get_oldest_person():
             oldest_person.append(lista[1])
 
     return oldest_person
-    """
-    pass
 
 
 
@@ -173,5 +136,5 @@ def get_persons_closest_to_average(table):
 
     pass
 
-#get_oldest_person()
+get_oldest_person()
 #print(bubble_sort(tab))
