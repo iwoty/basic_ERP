@@ -43,10 +43,10 @@ def print_result(result, label):
 # @list_options: list of strings - the options in the menu
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
 def print_menu(title, list_options, exit_message):
-
-    # your code
-
-    pass
+    print(title)
+    for i in range(0, len(list_options)):
+        print('({}) {}'.format(i+1, list_options[i]))
+    print('(0)', exit_message)
 
 
 # This function gets a list of inputs from the user by the terminal
@@ -56,9 +56,8 @@ def print_menu(title, list_options, exit_message):
 # @inputs: list of string - list of the received values from the user
 def get_inputs(list_labels, title):
     inputs = []
-
-    # your code
-
+    for i in range(len(list_labels)):
+        inputs.append(input(list_labels[i]))
     return inputs
 
 
@@ -66,7 +65,4 @@ def get_inputs(list_labels, title):
 #
 # @message: string - the error message
 def print_error_message(message):
-
-    # your code
-
-    pass
+    print(message)
