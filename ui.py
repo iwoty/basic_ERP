@@ -12,10 +12,14 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
+    width_of_table = len(title_list) - 1
+    for title in title_list:
+        width_of_table += len(title)
+    print(width_of_table)
+    print('/' + '-'*width_of_table + '\\')
 
-    # your code
 
-    pass
+    print('\\' + '-'*width_of_table + '/')
 
 
 # This function needs to print result of the special functions
