@@ -116,10 +116,27 @@ def update(table, id_):
 # return type: string (id)
 # if there are more than one with the lowest price, return the first of descending alphabetical order
 def get_lowest_price_item_id(table):
+    '''
+    Parameters
+    ----------
+    table : list
 
-    # your code
+    Returns
+    -------
+    information : string
+    '''
+    dic_price_id = {}
+    products_price = []
 
-    pass
+    for price in table:
+        products_price.append(price[2])
+
+    lowest_price = min(products_price)
+
+    for information in table:
+        if information[2] == lowest_price:
+            return information[0] # ID
+
 
 
 # the question: Which items are sold between two given dates ? (from_date < birth_date < to_date)
@@ -129,3 +146,4 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
     # your code
 
     pass
+
