@@ -32,6 +32,7 @@ def start_module():
 
 
 def choose():
+    table = data_manager.get_table_from_file('hr/persons.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
