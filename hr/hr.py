@@ -111,11 +111,58 @@ def update(table, id_):
 
 # the question: Who is the oldest person ?
 # return type: list of strings (name or names if there are two more with the same value)
-def get_oldest_person(table):
+def get_oldest_person():
+    """
+    table = data_manager.get_table_from_file('hr/persons.csv')
+    age = []
+    for line in table:
+        age.append(int(line[2]))
+    oldest = min(age)
 
-    # your code
+    oldest_person = []
 
+    for lista in table:
+        lista = tuple(lista)
+        if int(lista[2]) == oldest:
+            oldest_person.append(lista[1])
+
+    return oldest_person
+    """
     pass
+
+
+
+    #print(oldest)
+    """age = {}
+    for lista in table:
+        key = lista[2]
+        key = int(key)
+        value = lista[1]
+        age[key] = value
+    print(age)
+    oldest = min(age.keys())
+    print(age.keys())
+    old = []
+    for year in age.keys():
+        if year == oldest:
+            old.append(age[year])
+    print(old)"""
+
+
+
+    #age.values() =
+    #table = bubble_sort(age.values())
+    """oldest = []
+    for i in table:
+        if table[0] == table[i]:
+            oldest.append(table[i])
+    print(old)"""
+
+
+    #return old
+
+
+
 
 
 # the question: Who is the closest to the average age ?
@@ -125,3 +172,6 @@ def get_persons_closest_to_average(table):
     # your code
 
     pass
+
+#get_oldest_person()
+#print(bubble_sort(tab))
