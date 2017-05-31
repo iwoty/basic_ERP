@@ -30,18 +30,18 @@ def print_table(table, title_list):
     width_of_table += 2 * len(title_list) + 4
     print(width_of_table)
 
-    line_between_rows = '|'
-
-
     print('/' + '-' * width_of_table + '\\')
     SPACES_AROUND_STRING = 2
     row_to_print = '|'
+    line_between_rows = '|'
     for i in range(len(table)):
         for j in range(len(title_list)):
             row_to_print += columns[j][i].center(cell_widths[j]+SPACES_AROUND_STRING) + '|'
+            line_between_rows += '-'*(cell_widths[j]+SPACES_AROUND_STRING) + '|'
         print(row_to_print)
-        print('-' * )
+        print(line_between_rows)
         row_to_print = '|'
+        line_between_rows = '|'
 
     print('\\' + '-' * width_of_table + '/')
 
