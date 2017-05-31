@@ -66,9 +66,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_counts_by_manufacturers(table)
+        manufacturer_count = get_counts_by_manufacturers(table)
+        ui.print_result(manufacturer_count, 'Name of manufacturers : amount of products')
     elif option == "6":
         get_average_by_manufacturer(table, manufacturer)
+        #tutaj input manufacturer poznije print 
     elif option == "0":
         return 'back_to_main'
     else:

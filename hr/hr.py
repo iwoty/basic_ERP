@@ -64,9 +64,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_oldest_person(table)
+        oldest_person = get_oldest_person(table)
+        ui.print_result(oldest_person, 'Name of oldest customer')
     elif option == "6":
-        get_persons_closest_to_average(table)
+        close_to_average = get_persons_closest_to_average(table)
+        ui.print_result(close_to_average, 'Name of customer with age closest to average age')
     elif option == "0":
         return 'back_to_main'
     else:

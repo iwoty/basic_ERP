@@ -228,7 +228,7 @@ def get_subscribed_emails(table):
 
     for subscriber in table:
         if subscriber[3] == '1':
-            information = subscriber[2] + '; ' + subscriber[1]
+            information = subscriber[2] + ';' + subscriber[1]
             list_of_subscriber.append(information)
 
     return list_of_subscriber
