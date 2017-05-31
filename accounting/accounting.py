@@ -121,19 +121,20 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter month: ', 'Enter day: ', 'Enter year: ', 'Enter type (in/out): ', 'Enter amount: ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('accounting/items.csv', table)
     return table
 
 
@@ -208,14 +209,8 @@ def sum_profits(year, table):
     return profit, year
 
 
-
-
-
-
-
 # the question: Which year has the highest profit? (profit=in-out)
 # return the answer (number)
-
 def which_year_max(table):
     '''???
 
@@ -232,7 +227,6 @@ def which_year_max(table):
         if not line[3] in years:
             years.append(line[3])
 
-
     profits = []
 
     for i in range(len(years)):
@@ -247,14 +241,9 @@ def which_year_max(table):
     return max_profit_year
 
 
-
-
-
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
-
 def avg_amount(table, year):
-
     '''???
     Args:
         param1: ???

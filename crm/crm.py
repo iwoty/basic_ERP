@@ -117,18 +117,20 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter name: ', 'Enter email: ', 'Is subscribed? ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('crm/customers.csv', table)
     return table
 
 
@@ -226,7 +228,7 @@ def get_subscribed_emails(table):
 
     for subscriber in table:
         if subscriber[3] == '1':
-            information = subscriber[2] + '; ' + subscriber[1]
+            information = subscriber[2] + ';' + subscriber[1]
             list_of_subscriber.append(information)
 
     return list_of_subscriber

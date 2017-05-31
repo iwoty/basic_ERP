@@ -40,12 +40,12 @@ def print_table(table, title_list):
     print('/' + '-' * (width_of_table-SPACES_AROUND_STRING) + '\\')
     row_to_print = '|'
     line_between_rows = '|'
-    for i in range(len(table)):
+    for i in range(len(table)+1):
         for j in range(len(title_list)):
             row_to_print += columns[j][i].center(cell_widths[j]+SPACES_AROUND_STRING) + '|'
             line_between_rows += '-'*(cell_widths[j]+SPACES_AROUND_STRING) + '|'
         print(row_to_print)
-        if i == len(table)-1:
+        if i == len(table):
             print('\\' + '-' * (width_of_table-SPACES_AROUND_STRING) + '/')
         else:
             print(line_between_rows)
@@ -68,9 +68,25 @@ def print_result(result, label):
         ?????
 
     '''
-    # your code
+    print('\n', label, '\n')
 
-    pass
+    if type(result) in [str, float, int]:
+        print(result)
+
+    elif type(result) == list:
+        for entry in result:
+           print(entry)
+
+    elif type(result) == dict:
+        
+        longest_name = max(len(key) for key in result.keys())
+        
+        for key, value in result.items():
+            # print('{:>{'+str(longest_name)+'}}{3}'.format(key, value))
+            print('{:{width}}{:3}'.format(key, value, width = longest_name))
+
+    print('')
+
 
 
 # This function needs to generate outputs like this:

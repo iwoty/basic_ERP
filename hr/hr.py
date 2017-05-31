@@ -64,9 +64,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_oldest_person(table)
+        oldest_person = get_oldest_person(table)
+        ui.print_result(oldest_person, 'Name of oldest customer')
     elif option == "6":
-        get_persons_closest_to_average(table)
+        close_to_average = get_persons_closest_to_average(table)
+        ui.print_result(close_to_average, 'Name of customer with age closest to average age')
     elif option == "0":
         return 'back_to_main'
     else:
@@ -116,18 +118,20 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter name: ', 'Enter birthdate (year): ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('hr/persons.csv', table)
     return table
 
 
