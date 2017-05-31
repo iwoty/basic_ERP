@@ -13,7 +13,7 @@ import random
 
 
 def generate_random(table):
-    '''table
+    '''Generating random id number
 
     Args:
         table (nested list): table for check if generated key is not already in table
