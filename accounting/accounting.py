@@ -111,19 +111,90 @@ def update(table, id_):
 
 # special functions:
 # ------------------
+def sum_in(year, in_or_out, table):
+    sum_profit_in = 0
+    sum_in = []
+    for line in table:
+        line[5] = int(line[5])
+        if line[3] == year and line[4] == in_or_out:
+
+            sum_in.append(line[5])
+
+
+
+            for i in sum_in:
+                sum_profit_in += i
+
+
+    return sum_profit_in
+
+
+
+def sum_out(year, in_or_out, table):
+    sum_profit_out = 0
+    sum_out = []
+    for line in table:
+        line[5] = int(line[5])
+        if line[3] == year and line[4] == in_or_out:
+
+            sum_out.append(line[5])
+
+
+
+            for i in sum_out:
+                sum_profit_out += i
+
+    return sum_profit_out, year
+
+
+
+
+
+def profit(sum_profit_in,sum_profit_out, year):
+
+    profit = 0
+    profit = sum_profit_in - sum_profit_out
+    return profit, year
+
+
+
+def max_profit():
+    profit_2015, profit_2016 = profit(year, table)
+    pass
+
+
 
 # the question: Which year has the highest profit? (profit=in-out)
 # return the answer (number)
+
 def which_year_max(table):
+    years = []  
+    for line in table:
+        line[3] = int(line[3])
+        if not line[3] in years:
+            years.append(line[3])
 
-    # your code
+    profits = []
 
-    pass
+    for i in range(len(years)):
+        sum_profit_in = sum_in(years[i], 'in', table)
+        sum_profit_out, year = sum_out(years[i], 'out', table)
+        profits.append(profit(sum_profit_in, sum_profit_out, year))
+
+    for i in range(len(profits)-1):
+        max_profit = max(profits[1])
+    return max_profit
+
+
+
+
+
 
 
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
 def avg_amount(table, year):
+
 
     # your code
 
