@@ -15,23 +15,20 @@ def print_table(table, title_list):
 
     cell_widths = []
     columns = []
+    SPACES_AROUND_STRING = 2
 
     for i in range(len(title_list)):
-        columns.append([])
+        columns.append([title_list[i]])
         for j in range(len(table)):
             columns[i].append(table[j][i])  # columns - nested list with lists of elements of table columns
         cell_widths.append(max(map(len, columns[i])))   # cell_widths - list with max len of str in table columns
-    print(columns)
-    print(cell_widths)
 
     width_of_table = 0
     for width in cell_widths:
         width_of_table += width     # sum of the longest string length from row in table
-    width_of_table += 2 * len(title_list) + 4
-    print(width_of_table)
+    width_of_table += len(title_list) * SPACES_AROUND_STRING + len(title_list) + 1
 
-    print('/' + '-' * width_of_table + '\\')
-    SPACES_AROUND_STRING = 2
+    print('/' + '-' * (width_of_table-SPACES_AROUND_STRING) + '\\')
     row_to_print = '|'
     line_between_rows = '|'
     for i in range(len(table)):
@@ -39,11 +36,12 @@ def print_table(table, title_list):
             row_to_print += columns[j][i].center(cell_widths[j]+SPACES_AROUND_STRING) + '|'
             line_between_rows += '-'*(cell_widths[j]+SPACES_AROUND_STRING) + '|'
         print(row_to_print)
-        print(line_between_rows)
-        row_to_print = '|'
-        line_between_rows = '|'
-
-    print('\\' + '-' * width_of_table + '/')
+        if i == len(table)-1:
+            print('\\' + '-' * (width_of_table-SPACES_AROUND_STRING) + '/')
+        else:
+            print(line_between_rows)
+            row_to_print = '|'
+            line_between_rows = '|'
 
 
 # This function needs to print result of the special functions
