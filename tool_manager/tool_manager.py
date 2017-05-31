@@ -118,18 +118,21 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter name: ', 'Enter manufacturer: ', 'Enter purchase date (year): ',
+                   'Enter durability (year(s)): ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('tool_manager/tools.csv', table)
     return table
 
 
@@ -208,7 +211,7 @@ def get_available_tools(table):
 # @table: list of lists
 def get_average_durability_by_manufacturers(table):
 
-    '''Returns list with subscribed customer names and emails 
+    '''Returns list with subscribed customer names and emails
     Parameters
     ----------
     table : list
@@ -241,4 +244,3 @@ def get_average_durability_by_manufacturers(table):
         manufacturer_avr[manufacturer] = average
 
     return manufacturer_avr
-

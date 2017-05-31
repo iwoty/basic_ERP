@@ -70,7 +70,7 @@ def choose():
         ui.print_result(manufacturer_count, 'Name of manufacturers : amount of products')
     elif option == "6":
         get_average_by_manufacturer(table, manufacturer)
-        #tutaj input manufacturer poznije print 
+        #tutaj input manufacturer poznije print
     elif option == "0":
         return 'back_to_main'
     else:
@@ -120,18 +120,20 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter title: ', 'Enter manufacturer: ', 'Enter price: ', 'In_stock: ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('store/games.csv', table)
     return table
 
 
