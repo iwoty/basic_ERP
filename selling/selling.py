@@ -67,7 +67,7 @@ def choose():
         update(table, id_)
     elif option == "5":
         lowest_price_product_id = get_lowest_price_item_id(table)
-        ui.print_result(lowest_price_id, 'ID of lowest price product')     
+        ui.print_result(lowest_price_product_id, 'ID of lowest price product')     
     elif option == "6":
         get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
         # najpierw input potem print 

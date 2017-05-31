@@ -194,10 +194,10 @@ def get_available_tools(table):
 
     '''
     not_exceeded_durability = []
-    current_year = 2016
+    current_year = 2017
 
     for information in table:
-        if (current_year - int(information[-2])) < int(information[-1]):
+        if (current_year - int(information[-2])) <= int(information[-1]):
             not_exceeded_durability.append(information)
 
     return not_exceeded_durability
