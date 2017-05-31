@@ -26,6 +26,16 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     while True:
         handle_menu()
         try:
@@ -36,6 +46,16 @@ def start_module():
 
 
 def choose():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     table = data_manager.get_table_from_file('accounting/items.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
@@ -50,6 +70,7 @@ def choose():
     elif option == "5":
         which_year_max(table)
     elif option == "6":
+        year = input("year:")
         avg_amount(table, year)
     elif option == "0":
         return 'back_to_main'
@@ -58,6 +79,16 @@ def choose():
 
 
 def handle_menu():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     options = ["Show table",
                "Add to table",
                "Remove from table",
@@ -72,6 +103,16 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     title_list = ['id', 'month', 'day', 'year', 'type', 'amount']
     ui.print_table(table, title_list)
 
@@ -81,6 +122,16 @@ def show_table(table):
 # @table: list of lists
 def add(table):
 
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -91,7 +142,16 @@ def add(table):
 # @table: list of lists
 # @id_: string
 def remove(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -103,7 +163,16 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -111,56 +180,36 @@ def update(table, id_):
 
 # special functions:
 # ------------------
-def sum_in(year, in_or_out, table):
+def sum_profits(year, table):
     sum_profit_in = 0
     sum_in = []
     for line in table:
         line[5] = int(line[5])
-        if line[3] == year and line[4] == in_or_out:
+        if line[3] == year and line[4] == 'in':
 
             sum_in.append(line[5])
-
-
 
             for i in sum_in:
                 sum_profit_in += i
 
 
-    return sum_profit_in
-
-
-
-def sum_out(year, in_or_out, table):
     sum_profit_out = 0
     sum_out = []
     for line in table:
         line[5] = int(line[5])
-        if line[3] == year and line[4] == in_or_out:
-
+        if line[3] == year and line[4] == 'out':
             sum_out.append(line[5])
-
-
 
             for i in sum_out:
                 sum_profit_out += i
 
-    return sum_profit_out, year
-
-
-
-
-
-def profit(sum_profit_in,sum_profit_out, year):
-
-    profit = 0
     profit = sum_profit_in - sum_profit_out
+
     return profit, year
 
 
 
-def max_profit():
-    profit_2015, profit_2016 = profit(year, table)
-    pass
+
 
 
 
@@ -168,24 +217,34 @@ def max_profit():
 # return the answer (number)
 
 def which_year_max(table):
-    years = []  
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
+    years = []
     for line in table:
-        line[3] = int(line[3])
         if not line[3] in years:
             years.append(line[3])
+
 
     profits = []
 
     for i in range(len(years)):
-        sum_profit_in = sum_in(years[i], 'in', table)
-        sum_profit_out, year = sum_out(years[i], 'out', table)
-        profits.append(profit(sum_profit_in, sum_profit_out, year))
+        profits.append(sum_profits(years[i], table))
+    print(profits)
+    max_profit = max([tupl[0] for tupl in profits])
 
-    for i in range(len(profits)-1):
-        max_profit = max(profits[1])
-    return max_profit
+    for tupl in profits:
+        if tupl[0] == max_profit:
+            max_profit_year = tupl[1]
 
-
+    return max_profit_year
 
 
 
@@ -193,9 +252,16 @@ def which_year_max(table):
 
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
+
 def avg_amount(table, year):
 
+    '''???
+    Args:
+        param1: ???
+        param2: ???
 
-    # your code
+    Returns:
+        ?????
 
-    pass
+    '''
+    sum_profits(year, table)

@@ -26,6 +26,16 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     while True:
         handle_menu()
         try:
@@ -36,6 +46,16 @@ def start_module():
 
 
 def choose():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     table = data_manager.get_table_from_file('selling/sellings.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
@@ -58,6 +78,16 @@ def choose():
 
 
 def handle_menu():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     options = ["Show table",
                "Add to table",
                "Remove from table",
@@ -72,6 +102,16 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     title_list = ['id', 'title', 'price', 'month', 'day', 'year']
     ui.print_table(table, title_list)
 
@@ -80,7 +120,16 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -91,7 +140,16 @@ def add(table):
 # @table: list of lists
 # @id_: string
 def remove(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -103,7 +161,16 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -116,16 +183,47 @@ def update(table, id_):
 # return type: string (id)
 # if there are more than one with the lowest price, return the first of descending alphabetical order
 def get_lowest_price_item_id(table):
+    '''
+    Parameters
+    ----------
+    table : list
 
-    # your code
+    Returns
+    -------
+    information : string
+    '''
+    dic_price_id = {}
+    products_price = []
 
-    pass
+    for price in table:
+        products_price.append(price[2])
+
+    lowest_price = min(products_price)
+
+    for information in table:
+        if information[2] == lowest_price:
+            return information[0] # ID
+
 
 
 # the question: Which items are sold between two given dates ? (from_date < birth_date < to_date)
 # return type: list of lists (the filtered table)
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
+    '''???
 
-    # your code
+    Args:
+        param1: ???
+        param2: ???
 
-    pass
+    Returns:
+        ?????
+
+    '''
+    sold = []
+
+    for date in table:
+        if year_from <= int(date[-1]) <= year_to:
+            if month_from <= int(date[-3]) <= month_to:
+                if day_from <= int(date[-2]) <= day_to:
+                    sold.append([date[0], date[1], date[2]])
+    return sold

@@ -22,6 +22,16 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     while True:
         handle_menu()
         try:
@@ -32,6 +42,16 @@ def start_module():
 
 
 def choose():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     table = data_manager.get_table_from_file('hr/persons.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
@@ -54,6 +74,16 @@ def choose():
 
 
 def handle_menu():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     options = ["Show table",
                "Add to table",
                "Remove from table",
@@ -68,6 +98,16 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     title_list = ['id', 'name', 'birth_date']
     ui.print_table(table, title_list)
 
@@ -76,7 +116,16 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -87,7 +136,16 @@ def add(table):
 # @table: list of lists
 # @id_: string
 def remove(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -99,7 +157,16 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -112,8 +179,16 @@ def update(table, id_):
 # return type: list of strings (name or names if there are two more with the same value)
 
 def get_oldest_person(table):
+    '''???
 
-    #table = data_manager.get_table_from_file('hr/persons.csv')
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+    '''
+
     age = []
     for line in table:
         age.append(int(line[2]))
@@ -128,12 +203,19 @@ def get_oldest_person(table):
 
     return oldest_person
 
-
-
-
 # the question: Who is the closest to the average age ?
 # return type: list of strings (name or names if there are two more with the same value)
 def get_persons_closest_to_average(table):
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     average_age = []
     for line in table:
         average_age.append(int(line[2]))
@@ -141,7 +223,7 @@ def get_persons_closest_to_average(table):
     ave_numbers = 0
 
     for i in average_age:
-        ave_numbers+=i
+        ave_numbers += i
         average = ave_numbers/len(average_age)
 
     year_delta = []
@@ -164,47 +246,3 @@ def get_persons_closest_to_average(table):
     return close_to_ave
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        #for i in range(len(average_age)):
-        #    if average_age[i]
-    #average_age.append(average)
-
-    #numbers = bubble_sort(average_age)
-
-
-
-
-
-
-
-def bubble_sort(numbers):
-
-    amount = len(numbers)-1
-    for step in range(0, amount):
-        replacement = True
-        for index in range(0, amount-step):
-            if numbers[index]>numbers[index+1]:
-                numbers[index], numbers[index+1] = numbers[index+1], numbers[index]
-                replacement = False
-        if replacement:
-            return numbers
-    # your code
-
-#get_persons_closest_to_average(table)
-
-#get_oldest_person()
-#print(bubble_sort(tab))
