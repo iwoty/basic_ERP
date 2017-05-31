@@ -33,7 +33,7 @@ def start_module():
 
 
 def choose():
-    table = data_manager.get_table_from_file('crm/customers.csv')
+    table = data_manager.get_table_from_file('crm/customer.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
     if option == "1":
@@ -69,8 +69,10 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-    title_list = ['id', 'name', 'email', 'subscribed']
-    ui.print_table(table, title_list)
+
+    # your code
+
+    pass
 
 
 # Ask a new record as an input from the user than add it to @table, than return @table
@@ -145,7 +147,7 @@ def get_longest_name_id(table):
 # the question: Which customers has subscribed to the newsletter?
 # return type: list of string (where string is like email+separator+name, separator=";")
 def get_subscribed_emails(table):
-    '''Returns list with subscribed customer names and emails
+    '''Returns list with subscribed customer names and emails 
     Parameters
     ----------
     table : list
@@ -158,8 +160,11 @@ def get_subscribed_emails(table):
     list_of_subscriber = []
 
     for subscriber in table:
-        if subscriber[3] == '0':
-            information = subscriber[2] + ';' + subscriber[1]
+        if subscriber[3] == '1':
+            information = subscriber[2] + '; ' + subscriber[1]
             list_of_subscriber.append(information)
+    
 
     return list_of_subscriber
+
+

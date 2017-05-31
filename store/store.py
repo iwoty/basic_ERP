@@ -136,6 +136,15 @@ def get_counts_by_manufacturers(table):
 # the question: What is the average amount of games in stock of a given manufacturer?
 # return type: number
 def get_average_by_manufacturer(table, manufacturer):
+    '''
+    Parameters
+    ----------
+    table : list
+
+    Returns
+    -------
+    manufacturer_count : dictionary { [manufacturer] : [count] }
+    '''
 
     counter = 0
     amount_in_shop = 0

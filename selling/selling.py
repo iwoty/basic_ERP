@@ -143,7 +143,17 @@ def get_lowest_price_item_id(table):
 # return type: list of lists (the filtered table)
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
 
-    # your code
+    sold = []
 
-    pass
+    for date in table:
+        if year_from <= int(date[-1]) <= year_to:
+            if month_from <= int(date[-3]) <= month_to:
+                if day_from <= int(date[-2]) <= day_to: 
+                    sold.append([date[0], date[1], date[2]])
+    return sold
 
+  
+
+
+# table = data_manager.get_table_from_file('sellings.csv')
+# get_items_sold_between(table, 2, 1, 2015, 7, 30, 2016)
