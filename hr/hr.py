@@ -244,5 +244,3 @@ def get_persons_closest_to_average(table):
             close_to_ave.append(table[index_ave][1])
 
     return close_to_ave
-
-
