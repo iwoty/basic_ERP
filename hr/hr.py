@@ -245,27 +245,4 @@ def get_persons_closest_to_average(table):
 
     return close_to_ave
 
-<<<<<<< HEAD
-=======
 
-def bubble_sort(numbers):
-    '''???
-
-    Args:
-        param1: ???
-        param2: ???
-
-    Returns:
-        ?????
-
-    '''
-    amount = len(numbers)-1
-    for step in range(0, amount):
-        replacement = True
-        for index in range(0, amount-step):
-            if numbers[index] > numbers[index+1]:
-                numbers[index], numbers[index+1] = numbers[index+1], numbers[index]
-                replacement = False
-        if replacement:
-            return numbers
->>>>>>> 84f355dedffa8fa7c6eed77363f6ead317c2ce57
