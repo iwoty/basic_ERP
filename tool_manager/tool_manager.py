@@ -116,9 +116,13 @@ def update(table, id_):
 # @table: list of lists
 def get_available_tools(table):
 
-    # your code
+    exceeded_durability = []
+    current_year = 2017
 
-    pass
+    for information in table:
+        if (current_file_path - information[-2]) < information[-1]:
+            exceeded_durability.append(information)
+    print(exceeded_durability)
 
 
 # the question: What are the average durability time for each manufacturer?
@@ -130,3 +134,6 @@ def get_average_durability_by_manufacturers(table):
     # your code
 
     pass
+
+table = data_manager.get_table_from_file('tools.csv')
+get_available_tools(table)
