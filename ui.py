@@ -40,12 +40,12 @@ def print_table(table, title_list):
     print('/' + '-' * (width_of_table-SPACES_AROUND_STRING) + '\\')
     row_to_print = '|'
     line_between_rows = '|'
-    for i in range(len(table)):
+    for i in range(len(table)+1):
         for j in range(len(title_list)):
             row_to_print += columns[j][i].center(cell_widths[j]+SPACES_AROUND_STRING) + '|'
             line_between_rows += '-'*(cell_widths[j]+SPACES_AROUND_STRING) + '|'
         print(row_to_print)
-        if i == len(table)-1:
+        if i == len(table):
             print('\\' + '-' * (width_of_table-SPACES_AROUND_STRING) + '/')
         else:
             print(line_between_rows)
