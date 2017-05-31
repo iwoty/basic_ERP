@@ -140,22 +140,36 @@ def get_available_tools(table):
 #
 # @table: list of lists
 def get_average_durability_by_manufacturers(table):
+    '''Returns list with subscribed customer names and emails 
+    Parameters
+    ----------
+    table : list
+
+    Returns
+    -------
+    manufacturer_avr : dictionary { [manufacturer] : [average] }
+    '''
 
     manufacturer_avr = {}
-    # sum_of_durability = 
 
     for information in table:
         if information[-3] in manufacturer_avr:
             manufacturer = information[-3]
             durability = int(information[-1])
-            manufacturer_avr[manufacturer] += durability
+            manufacturer_avr[manufacturer] += [durability]
         else:
             manufacturer = information[-3]
             durability = int(information[-1])
-            manufacturer_avr[manufacturer] = durability
+            manufacturer_avr[manufacturer] = [durability]
 
-    print(manufacturer_avr)
-    # your code
+    for manufacturer in manufacturer_avr:
+        sum_of_durability = 0
 
-table = data_manager.get_table_from_file('tools.csv')
-get_average_durability_by_manufacturers(table)
+        for number in manufacturer_avr[manufacturer]:
+            sum_of_durability += number
+
+        average = sum_of_durability / len(manufacturer_avr[manufacturer])
+
+        manufacturer_avr[manufacturer] = average
+
+    return manufacturer_avr
