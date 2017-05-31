@@ -74,8 +74,14 @@ def print_result(result, label):
         print(result)
 
     elif type(result) == list:
-        for entry in result:
-           print(entry)
+        for content in result:
+            if type(content) == list:
+                for inner_content in content:
+                    print(inner_content, end = ' ')
+                print()
+            else:
+                print(content)
+
 
     elif type(result) == dict:
         
@@ -83,7 +89,7 @@ def print_result(result, label):
         
         for key, value in result.items():
             # print('{:>{'+str(longest_name)+'}}{3}'.format(key, value))
-            print('{:{width}}{:3}'.format(key, value, width = longest_name))
+            print('{:{width}} {:3}'.format(key, value, width = longest_name))
 
     print('')
 

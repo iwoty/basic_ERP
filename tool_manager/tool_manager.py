@@ -66,9 +66,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_available_tools(table)
+        available_tools = get_available_tools(table)
+        ui.print_result(available_tools, 'Produckt before their durability time')
     elif option == "6":
-        get_average_durability_by_manufacturers(table)
+        average_durability = get_average_durability_by_manufacturers(table)
+        ui.print_result(average_durability, 'Manufacture ; average durability')
     elif option == "0":
         return 'back_to_main'
     else:
@@ -196,7 +198,7 @@ def get_available_tools(table):
 
     '''
     not_exceeded_durability = []
-    current_year = 2017
+    current_year = 2016
 
     for information in table:
         if (current_year - int(information[-2])) < int(information[-1]):
