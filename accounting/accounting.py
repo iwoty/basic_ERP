@@ -26,14 +26,13 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
-    '''???
+    '''Starting this module.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     while True:
@@ -46,14 +45,13 @@ def start_module():
 
 
 def choose():
-    '''???
+    '''Menu choice of functions in module.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     table = data_manager.get_table_from_file('accounting/items.csv')
@@ -68,10 +66,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        which_year_max(table)
+        max_year = which_year_max(table)
+        ui.print_result(max_year, 'Year with the highest profit')
     elif option == "6":
-        year = input("year:")
         avg_amount(table, year)
+        # tutaj inputy a poznije print
     elif option == "0":
         return 'back_to_main'
     else:
@@ -79,14 +78,13 @@ def choose():
 
 
 def handle_menu():
-    '''???
+    '''Handling with options of menu.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     options = ["Show table",
@@ -103,14 +101,13 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-    '''???
+    '''Shows(prints) table.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        None
 
     '''
     title_list = ['id', 'month', 'day', 'year', 'type', 'amount']
@@ -182,6 +179,16 @@ def update(table, id_):
 # special functions:
 # ------------------
 def sum_profits(year, table):
+    '''Sums incomes, outcomes and calculates a profit
+
+    Args:
+        year: int
+        table: list of lists
+
+    Returns:
+        profit: int
+        year: int
+    '''
     sum_profit_in = 0
     sum_in = []
     for line in table:
@@ -207,21 +214,20 @@ def sum_profits(year, table):
         sum_profit_out += i
 
     profit = sum_profit_in - sum_profit_out
-    print(sum_profit_in, sum_profit_out)
+
     return profit, year
 
 
 # the question: Which year has the highest profit? (profit=in-out)
 # return the answer (number)
 def which_year_max(table):
-    '''???
+    '''Finds a year with the highest profit
 
     Args:
-        param1: ???
-        param2: ???
+        table: list of lists
 
     Returns:
-        ?????
+        max_profit_year: int
 
     '''
     years = []
@@ -242,34 +248,41 @@ def which_year_max(table):
         if tupl[0] == max_profit:
             max_profit_year = tupl[1]
 
-    print(max_profit_year)
+    max_profit_year = int(max_profit_year)
+
     return max_profit_year
 
 
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
 def avg_amount(table, year):
-    '''???
+    '''Counts the average profit for a given year
     Args:
-        param1: ???
-        param2: ???
+        tabel : list of lists
+        year : int
 
     Returns:
-        ?????
+        avr_profit : int
 
     '''
-    profit, year = sum_profits(year, table)
-    print(profit)
-    amount = 0
 
-    for line in table:
-        if line[3] == year:
-            amount += 1
+    count = 0
+    sum_in = 0
+    sum_out = 0
 
-    print(amount)
-    if int(amount) == 0:
-        return 0
+    for information in table:
+        if int(information[-3]) == year:
+            count += 1
+            if information[-2] == 'in':
+                sum_in = sum_in + int(information[-1])
+            elif information[-2] == 'out':
+                sum_out = sum_out + int(information[-1])
+
+    profit = sum_in - sum_out
+
+    if count == 0:
+        return None
     else:
-        average = profit / amount
-        print(average)
-        return(average)
+        avr_profit = profit / count
+
+    return avr_profit

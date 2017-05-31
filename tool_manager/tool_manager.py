@@ -24,14 +24,13 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
-    '''???
+    '''Starting this module.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     while True:
@@ -44,14 +43,13 @@ def start_module():
 
 
 def choose():
-    '''???
+    '''Menu choice of functions in module.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     table = data_manager.get_table_from_file('tool_manager/tools.csv')
@@ -66,9 +64,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_available_tools(table)
+        available_tools = get_available_tools(table)
+        ui.print_result(available_tools, 'Produckt before their durability time')
     elif option == "6":
-        get_average_durability_by_manufacturers(table)
+        average_durability = get_average_durability_by_manufacturers(table)
+        ui.print_result(average_durability, 'Manufacture ; average durability')
     elif option == "0":
         return 'back_to_main'
     else:
@@ -76,14 +76,13 @@ def choose():
 
 
 def handle_menu():
-    '''???
+    '''Handling with options of menu.
 
     Args:
-        param1: ???
-        param2: ???
+        None
 
     Returns:
-        ?????
+        None
 
     '''
     options = ["Show table",
@@ -100,14 +99,13 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
-    '''???
+    '''Shows(prints) table.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        None
 
     '''
     title_list = ['id', 'name', 'manufacturer', 'purchase_date', 'durability']
@@ -199,7 +197,7 @@ def get_available_tools(table):
     current_year = 2017
 
     for information in table:
-        if (current_year - int(information[-2])) < int(information[-1]):
+        if (current_year - int(information[-2])) <= int(information[-1]):
             not_exceeded_durability.append(information)
 
     return not_exceeded_durability
