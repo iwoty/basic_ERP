@@ -68,13 +68,13 @@ def print_result(result, label):
         ?????
 
     '''
-    print("\n", label, '\n' )
+    print('\n', label, '\n')
 
     if type(result) in [str, float, int]:
-       print(result)
+        print(result)
 
     elif type(result) == list:
-       for entry in result:
+        for entry in result:
            print(entry)
 
     elif type(result) == dict:
@@ -85,11 +85,8 @@ def print_result(result, label):
             # print('{:>{'+str(longest_name)+'}}{3}'.format(key, value))
             print('{:{width}}{:3}'.format(key, value, width = longest_name))
 
-    print("")
-    #    for key, value in result.items():
-    #        print('{:>6}{}'.format(key, value))
+    print('')
 
-    # print("")
 
 
 # This function needs to generate outputs like this:
