@@ -58,17 +58,17 @@ def print_table(table, title_list):
 # @result: string or list or dictionary - result of the special function
 # @label: string - label of the result
 def print_result(result, label):
-    '''???
+    '''Prints result of special functions in modules.
 
     Args:
-        param1: ???
-        param2: ???
+        result: result from special function
+        label: name of special function
 
     Returns:
-        ?????
+        None
 
     '''
-    print('\n', label, '\n')
+    print('\n\b', label, '\n')
 
     if type(result) in [str, float, int]:
         print(result)
@@ -84,15 +84,15 @@ def print_result(result, label):
 
 
     elif type(result) == dict:
-        
+
         longest_name = max(len(key) for key in result.keys())
-        
+
         for key, value in result.items():
-            # print('{:>{'+str(longest_name)+'}}{3}'.format(key, value))
+
             print('{:{width}} {:3}'.format(key, value, width = longest_name))
 
-    print('')
 
+    print('')
 
 
 # This function needs to generate outputs like this:
