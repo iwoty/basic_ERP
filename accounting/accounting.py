@@ -70,6 +70,7 @@ def choose():
     elif option == "5":
         which_year_max(table)
     elif option == "6":
+        year = input("year:")
         avg_amount(table, year)
     elif option == "0":
         return 'back_to_main'
@@ -180,6 +181,33 @@ def update(table, id_):
 
 # special functions:
 # ------------------
+def sum_profits(year, table):
+    sum_profit_in = 0
+    sum_in = []
+    for line in table:
+        line[5] = int(line[5])
+        if line[3] == year and line[4] == 'in':
+
+            sum_in.append(line[5])
+
+            for i in sum_in:
+                sum_profit_in += i
+
+
+    sum_profit_out = 0
+    sum_out = []
+    for line in table:
+        line[5] = int(line[5])
+        if line[3] == year and line[4] == 'out':
+            sum_out.append(line[5])
+
+            for i in sum_out:
+                sum_profit_out += i
+
+    profit = sum_profit_in - sum_profit_out
+
+    return profit, year
+
 
 # the question: Which year has the highest profit? (profit=in-out)
 # return the answer (number)
@@ -194,15 +222,30 @@ def which_year_max(table):
         ?????
 
     '''
-    # your code
-    pass
+    years = []
+    for line in table:
+        if not line[3] in years:
+            years.append(line[3])
+
+    profits = []
+
+    for i in range(len(years)):
+        profits.append(sum_profits(years[i], table))
+
+    max_profit = max([tupl[0] for tupl in profits])
+
+    for tupl in profits:
+        if tupl[0] == max_profit:
+            max_profit_year = tupl[1]
+
+    print(max_profit_year)
+    return max_profit_year
 
 
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
 def avg_amount(table, year):
     '''???
-
     Args:
         param1: ???
         param2: ???
@@ -211,6 +254,13 @@ def avg_amount(table, year):
         ?????
 
     '''
-    # your code
+    profit, year = sum_profits(year, table)
+    print(profit)
+    amount = 0
 
-    pass
+    for line in table:
+        if line[3] == year:
+            amount += 1
+    average = profit / amount
+    print(average)
+    return average
