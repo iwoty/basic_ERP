@@ -141,6 +141,21 @@ def get_available_tools(table):
 # @table: list of lists
 def get_average_durability_by_manufacturers(table):
 
+    manufacturer_avr = {}
+    # sum_of_durability = 
+
+    for information in table:
+        if information[-3] in manufacturer_avr:
+            manufacturer = information[-3]
+            durability = int(information[-1])
+            manufacturer_avr[manufacturer] += durability
+        else:
+            manufacturer = information[-3]
+            durability = int(information[-1])
+            manufacturer_avr[manufacturer] = durability
+
+    print(manufacturer_avr)
     # your code
 
-    pass
+table = data_manager.get_table_from_file('tools.csv')
+get_average_durability_by_manufacturers(table)
