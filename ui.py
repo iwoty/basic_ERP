@@ -12,7 +12,16 @@
 # @table: list of lists - the table to print out
 # @title_list: list of strings - the head of the table
 def print_table(table, title_list):
+    '''Prints given table with nice, smooth order and with centered values in cells.
 
+    Args:
+        table (nested list): table with data
+        title_list (list of strings): list with titles of data in table
+
+    Returns:
+        None
+
+    '''
     cell_widths = []
     columns = []
     SPACES_AROUND_STRING = 2
@@ -49,7 +58,16 @@ def print_table(table, title_list):
 # @result: string or list or dictionary - result of the special function
 # @label: string - label of the result
 def print_result(result, label):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     pass
@@ -69,6 +87,17 @@ def print_result(result, label):
 # @list_options: list of strings - the options in the menu
 # @exit_message: string - the last option with (0) (example: "Back to main menu")
 def print_menu(title, list_options, exit_message):
+    '''Print menu with given parameters.
+
+    Args:
+        title (str): title of menu
+        list_options (list): list_options with options of menu
+        exit_message (str): message of exit menu or 'go-back' menu
+
+    Returns:
+        None
+
+    '''
     print(title)
     for i in range(0, len(list_options)):
         print('({}) {}'.format(i+1, list_options[i]))
@@ -81,6 +110,16 @@ def print_menu(title, list_options, exit_message):
 # @title: string - title of the "input section"
 # @inputs: list of string - list of the received values from the user
 def get_inputs(list_labels, title):
+    '''Getting inputs from user.
+
+    Args:
+        list_labels (list): Labels of input(s).
+        title (str): Title of input.
+
+    Returns:
+        inputs (list): List of inputs from user.
+
+    '''
     inputs = []
     for i in range(len(list_labels)):
         inputs.append(input(list_labels[i]))
@@ -91,4 +130,13 @@ def get_inputs(list_labels, title):
 #
 # @message: string - the error message
 def print_error_message(message):
+    '''Prints given error message.
+
+    Args:
+        message (str): message with error
+
+    Returns:
+        None
+
+    '''
     print(message)

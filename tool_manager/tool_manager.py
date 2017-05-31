@@ -24,6 +24,16 @@ common = SourceFileLoader("common", current_file_path + "/../common.py").load_mo
 # we need to reach the default and the special functions of this module from the module menu
 #
 def start_module():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     while True:
         handle_menu()
         try:
@@ -34,6 +44,16 @@ def start_module():
 
 
 def choose():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     table = data_manager.get_table_from_file('tool_manager/tools.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
     option = inputs[0]
@@ -56,6 +76,16 @@ def choose():
 
 
 def handle_menu():
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     options = ["Show table",
                "Add to table",
                "Remove from table",
@@ -70,6 +100,16 @@ def handle_menu():
 #
 # @table: list of lists
 def show_table(table):
+    '''???
+
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     title_list = ['id', 'name', 'manufacturer', 'purchase_date', 'durability']
     ui.print_table(table, title_list)
 
@@ -78,7 +118,16 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -89,7 +138,16 @@ def add(table):
 # @table: list of lists
 # @id_: string
 def remove(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -101,7 +159,16 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
+    '''???
 
+    Args:
+        param1: ???
+        param2: ???
+
+    Returns:
+        ?????
+
+    '''
     # your code
 
     return table
@@ -115,7 +182,7 @@ def update(table, id_):
 #
 # @table: list of lists
 def get_available_tools(table):
-    '''Returns list with subscribed customer names and emails 
+    '''Returns list with subscribed customer names and emails
     Parameters
     ----------
     table : list
@@ -123,8 +190,8 @@ def get_available_tools(table):
     Returns
     -------
     exceeded_durability : list of lists
-    '''
 
+    '''
     not_exceeded_durability = []
     current_year = 2017
 
@@ -140,6 +207,7 @@ def get_available_tools(table):
 #
 # @table: list of lists
 def get_average_durability_by_manufacturers(table):
+<<<<<<< HEAD
     '''Returns list with subscribed customer names and emails 
     Parameters
     ----------
@@ -149,7 +217,16 @@ def get_average_durability_by_manufacturers(table):
     -------
     manufacturer_avr : dictionary { [manufacturer] : [average] }
     '''
+=======
+    '''Returns average durability of item by manufacturers.
+    Args:
+        table (nested list): Table with data.
+>>>>>>> 84f355dedffa8fa7c6eed77363f6ead317c2ce57
 
+    Returns:
+        manufacturer_avr (str): returns average CO??
+
+    '''
     manufacturer_avr = {}
 
     for information in table:
@@ -162,6 +239,7 @@ def get_average_durability_by_manufacturers(table):
             durability = int(information[-1])
             manufacturer_avr[manufacturer] = [durability]
 
+<<<<<<< HEAD
     for manufacturer in manufacturer_avr:
         sum_of_durability = 0
 
@@ -173,3 +251,10 @@ def get_average_durability_by_manufacturers(table):
         manufacturer_avr[manufacturer] = average
 
     return manufacturer_avr
+=======
+    print(manufacturer_avr)
+    # return manufacturer_avr
+
+# table = data_manager.get_table_from_file('tools.csv')
+# get_average_durability_by_manufacturers(table)
+>>>>>>> 84f355dedffa8fa7c6eed77363f6ead317c2ce57
