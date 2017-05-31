@@ -185,27 +185,29 @@ def sum_profits(year, table):
     sum_profit_in = 0
     sum_in = []
     for line in table:
+
         line[5] = int(line[5])
-        if line[3] == year and line[4] == 'in':
+
+        if int(line[3]) == int(year) and line[4] == 'in':
 
             sum_in.append(line[5])
 
-            for i in sum_in:
-                sum_profit_in += i
+    for i in sum_in:
+        sum_profit_in += i
 
 
     sum_profit_out = 0
     sum_out = []
     for line in table:
         line[5] = int(line[5])
-        if line[3] == year and line[4] == 'out':
+        if int(line[3]) == int(year) and line[4] == 'out':
             sum_out.append(line[5])
 
-            for i in sum_out:
-                sum_profit_out += i
+    for i in sum_out:
+        sum_profit_out += i
 
     profit = sum_profit_in - sum_profit_out
-
+    print(sum_profit_in, sum_profit_out)
     return profit, year
 
 
@@ -224,12 +226,14 @@ def which_year_max(table):
     '''
     years = []
     for line in table:
-        if not line[3] in years:
-            years.append(line[3])
+        if not int(line[3]) in years:
+            years.append(int(line[3]))
+
 
     profits = []
 
     for i in range(len(years)):
+
         profits.append(sum_profits(years[i], table))
 
     max_profit = max([tupl[0] for tupl in profits])
@@ -261,6 +265,11 @@ def avg_amount(table, year):
     for line in table:
         if line[3] == year:
             amount += 1
-    average = profit / amount
-    print(average)
-    return average
+
+    print(amount)
+    if int(amount) == 0:
+        return 0
+    else:
+        average = profit / amount
+        print(average)
+        return(average)
