@@ -207,16 +207,28 @@ def get_available_tools(table):
 #
 # @table: list of lists
 def get_average_durability_by_manufacturers(table):
-    '''???
-
+    '''Returns average durability of item by manufacturers.
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): Table with data.
 
     Returns:
-        ?????
+        manufacturer_avr (str): returns average CO??
 
     '''
-    # your code
+    manufacturer_avr = {}
 
-    pass
+    for information in table:
+        if information[-3] in manufacturer_avr:
+            manufacturer = information[-3]
+            durability = int(information[-1])
+            manufacturer_avr[manufacturer] += durability
+        else:
+            manufacturer = information[-3]
+            durability = int(information[-1])
+            manufacturer_avr[manufacturer] = durability
+
+    print(manufacturer_avr)
+    # return manufacturer_avr
+
+# table = data_manager.get_table_from_file('tools.csv')
+# get_average_durability_by_manufacturers(table)
