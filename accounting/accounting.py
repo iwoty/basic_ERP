@@ -66,10 +66,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        which_year_max(table)
+        max_year = which_year_max(table)
+        ui.print_result(max_year, 'Year with the highest profit')
     elif option == "6":
-        year = input("year:")
         avg_amount(table, year)
+        # tutaj inputy a poznije print
     elif option == "0":
         return 'back_to_main'
     else:
@@ -233,8 +234,9 @@ def which_year_max(table):
     for tupl in profits:
         if tupl[0] == max_profit:
             max_profit_year = tupl[1]
+    
+    max_profit_year = int(max_profit_year)
 
-    print(max_profit_year)
     return max_profit_year
 
 
@@ -243,20 +245,30 @@ def which_year_max(table):
 def avg_amount(table, year):
     '''???
     Args:
-        param1: ???
-        param2: ???
+        tabel : list of lists
+        year : int
 
     Returns:
-        ?????
+        avr_profit : int
 
     '''
-    profit, year = sum_profits(year, table)
-    print(profit)
-    amount = 0
+    count = 0
+    sum_in = 0
+    sum_out = 0
 
-    for line in table:
-        if line[3] == year:
-            amount += 1
-    average = profit / amount
-    print(average)
-    return average
+    for information in table:
+        if int(information[-3]) == year:
+            count += 1
+            if information[-2] == 'in':
+                sum_in = sum_in + int(information[-1])
+            elif information[-2] == 'out':
+                sum_out = sum_out + int(information[-1])
+
+    profit = sum_in - sum_out
+
+    if count == 0:
+        return None
+    else:
+        avr_profit = profit / count
+
+    return avr_profit
