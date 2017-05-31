@@ -264,4 +264,12 @@ def avg_amount(table, year):
         ?????
 
     '''
-    sum_profits(year, table)
+    profit, year = sum_profits(year, table)
+    print(profit)
+    amount = 0
+
+    for line in table:
+        if line[3] == year:
+            amount += 1
+    average = profit / amount
+    return average
