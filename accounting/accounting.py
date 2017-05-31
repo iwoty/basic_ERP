@@ -231,13 +231,14 @@ def which_year_max(table):
 
     for i in range(len(years)):
         profits.append(sum_profits(years[i], table))
-    print(profits)
+
     max_profit = max([tupl[0] for tupl in profits])
 
     for tupl in profits:
         if tupl[0] == max_profit:
             max_profit_year = tupl[1]
 
+    print(max_profit_year)
     return max_profit_year
 
 
@@ -261,4 +262,5 @@ def avg_amount(table, year):
         if line[3] == year:
             amount += 1
     average = profit / amount
+    print(average)
     return average
