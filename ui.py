@@ -24,18 +24,27 @@ def print_table(table, title_list):
     print(columns)
     print(cell_widths)
 
-    width_of_table = -2
+    width_of_table = 0
     for width in cell_widths:
         width_of_table += width     # sum of the longest string length from row in table
+    width_of_table += 2 * len(title_list) + 4
     print(width_of_table)
 
-    print('/' + '-'*(width_of_table+2*len(title_list)+6) + '\\')
-    print('|' + columns[0][0].center(cell_widths[0]+2) + '|'
-          + columns[1][0].center(cell_widths[1]+2) + '|'
-          + columns[2][0].center(cell_widths[2]+2) + '|'
-          + columns[3][0].center(cell_widths[3]+2) + '|'
-          + columns[4][0].center(cell_widths[4]+2) + '|')
-    print('\\' + '-'*(width_of_table+2*len(title_list)+6) + '/')
+    line_between_rows = '|'
+
+
+    print('/' + '-' * width_of_table + '\\')
+    SPACES_AROUND_STRING = 2
+    row_to_print = '|'
+    for i in range(len(table)):
+        for j in range(len(title_list)):
+            row_to_print += columns[j][i].center(cell_widths[j]+SPACES_AROUND_STRING) + '|'
+        print(row_to_print)
+        print('-' * )
+        row_to_print = '|'
+
+    print('\\' + '-' * width_of_table + '/')
+
 
 # This function needs to print result of the special functions
 #
