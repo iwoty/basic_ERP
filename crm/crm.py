@@ -65,9 +65,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        get_longest_name_id(table)
+        longest_name_id = get_longest_name_id(table)
+        ui.print_result(longest_name_id, 'ID of customer with longest name')
     elif option == "6":
-        get_subscribed_emails(table)
+        subscribers_emails = get_subscribed_emails(table)
+        ui.print_result(subscribers_emails, 'Customer email ; Subscribed customer name')
     elif option == "0":
         return 'back_to_main'
     else:
