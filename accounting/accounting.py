@@ -120,18 +120,20 @@ def show_table(table):
 #
 # @table: list of lists
 def add(table):
-    '''???
+    '''Adds data with randomly generater ID to table and saves it to file.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
 
     Returns:
-        ?????
+        table (nested list): with added item
 
     '''
-    # your code
-
+    list_labels = ['Enter month: ', 'Enter day: ', 'Enter year: ', 'Enter type (in/out): ', 'Enter amount: ']
+    inputs = [common.generate_random(table)]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('accounting/items.csv', table)
     return table
 
 
@@ -193,7 +195,6 @@ def which_year_max(table):
 
     '''
     # your code
-
     pass
 
 

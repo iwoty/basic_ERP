@@ -11,21 +11,19 @@ import random
 # @table: list of list
 # @generated: string - generated random string (unique in the @table)
 
-table = []
-special_char = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '?']
-
 
 def generate_random(table):
-    '''???
+    '''table
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table for check if generated key is not already in table
 
     Returns:
-        ?????
+        generated (str): generated key
 
     '''
+    table = []
+    special_char = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '?']
     generated = ''
     # chr(random.randint(97, 122)) # a - z
     # chr(random.randint(65, 90)) # A - Z
