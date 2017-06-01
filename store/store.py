@@ -60,7 +60,7 @@ def choose():
     elif option == "2":
         add(table)
     elif option == "3":
-        remove(table, id_)
+        remove(table, ui.get_inputs(['Enter ID of record to remove it: '], ''))
     elif option == "4":
         update(table, id_)
     elif option == "5":
