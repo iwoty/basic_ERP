@@ -193,10 +193,11 @@ def get_available_tools(table):
     exceeded_durability : list of lists
 
     '''
+    proper_table = common.str_to_int_in(table)
     not_exceeded_durability = []
     current_year = 2017
 
-    for information in table:
+    for information in proper_table:
         if (current_year - int(information[-2])) <= int(information[-1]):
             not_exceeded_durability.append(information)
 
