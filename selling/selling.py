@@ -69,8 +69,14 @@ def choose():
         lowest_price_product_id = get_lowest_price_item_id(table)
         ui.print_result(lowest_price_product_id, 'ID of lowest price product')
     elif option == "6":
-        get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
-        # najpierw input potem print
+        month_from = int(''.join(ui.get_inputs(['From month: '], '')))
+        day_from = int(''.join(ui.get_inputs(['From day: '], '')))
+        year_from = int(''.join(ui.get_inputs(['From year: '], '')))
+        month_to = int(''.join(ui.get_inputs(['To month: '], '')))
+        day_to = int(''.join(ui.get_inputs(['To day: '], '')))
+        year_to = int(''.join(ui.get_inputs(['To year: '], '')))
+        sold_between = get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
+        ui.print_result(sold_between, 'Products sold in given period')
     elif option == "0":
         return 'back_to_main'
     else:
@@ -127,11 +133,17 @@ def add(table):
         table (nested list): with added item
 
     '''
-    list_labels = ['Enter title: ', 'Enter price: ', 'Enter month: ', 'Enter day: ', 'Enter year: ']
+    list_labels = ['Enter title: ',
+                   'Enter price: ', 
+                   'Enter month: ', 
+                   'Enter day: ', 
+                   'Enter year: ']
+
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
     data_manager.write_table_to_file('selling/sellings.csv', table)
+    
     return table
 
 
@@ -152,14 +164,17 @@ def remove(table, id_):
     '''
     i = 0
     id_ = ''.join(id_)  # change element of the list to string
+    
     for row in table:
         if id_ == row[0]:
             table.pop(i)
         else:
             i += 1
+    
     if i == (len(table)):
         ui.print_string('There is no such ID.')
     data_manager.write_table_to_file('selling/sellings.csv', table)
+    
     return table
 
 
