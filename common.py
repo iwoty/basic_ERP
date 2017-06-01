@@ -12,6 +12,7 @@ import random
 # @generated: string - generated random string (unique in the @table)
 
 
+
 def generate_random(table):
     '''Generating random id number
 
@@ -33,9 +34,11 @@ def generate_random(table):
     generated = (chr(random.randint(97, 122)) + chr(random.randint(65, 90)) + chr(random.randint(48, 57))
                  + chr(random.randint(48, 57)) + chr(random.randint(65, 90)) + chr(random.randint(97, 122))
                  + random.choice(special_char) + random.choice(special_char))
+
     for item in table:
         while generated == table[0]:
             generated = (chr(random.randint(97, 122)) + chr(random.randint(65, 90)) + chr(random.randint(48, 57))
                          + chr(random.randint(48, 57)) + chr(random.randint(65, 90)) + chr(random.randint(97, 122))
                          + random.choice(special_char) + random.choice(special_char))
+    #print(generated)
     return generated

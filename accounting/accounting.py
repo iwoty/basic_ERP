@@ -56,7 +56,6 @@ def choose():
     '''
     table = data_manager.get_table_from_file('accounting/items.csv')
     inputs = ui.get_inputs(["Please enter a number: "], "")
-    option = inputs[0]
     if option == "1":
         show_table(table)
     elif option == "2":
@@ -150,9 +149,7 @@ def remove(table, id_):
         ?????
 
     '''
-    # your code
-
-    return table
+    pass
 
 
 # Update the record in @table having the id @id_ by asking the new data from the user,
@@ -160,6 +157,7 @@ def remove(table, id_):
 #
 # @table: list of lists
 # @id_: string
+
 def update(table, id_):
     '''???
 
@@ -174,6 +172,7 @@ def update(table, id_):
     # your code
 
     return table
+
 
 
 # special functions:

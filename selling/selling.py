@@ -161,7 +161,7 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
-    '''???
+    '''
 
     Args:
         param1: ???
@@ -221,7 +221,7 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
         year_to: int
 
     Returns:
-        sold: list of lists
+        sold: list of list
 
     '''
     sold = []
