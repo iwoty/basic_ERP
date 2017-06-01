@@ -235,7 +235,7 @@ def get_items_sold_between(table, month_from, day_from, year_from, month_to, day
         year_to: int
 
     Returns:
-        sold: list of lists
+        sold: list of list
 
     '''
     sold = []

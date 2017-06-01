@@ -162,11 +162,13 @@ def remove(table, id_):
     return table
 
 
+
 # Update the record in @table having the id @id_ by asking the new data from the user,
 # than return @table
 #
 # @table: list of lists
 # @id_: string
+
 def update(table, id_):
     '''Updating an item by removing its values and adding new ones.
 
@@ -187,6 +189,7 @@ def update(table, id_):
     table.append(inputs)
     data_manager.write_table_to_file('accounting/items.csv', table)
     return table
+
 
 
 # special functions:

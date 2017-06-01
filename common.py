@@ -12,6 +12,7 @@ import random
 # @generated: string - generated random string (unique in the @table)
 
 
+
 def generate_random(table):
     '''Checking if generated id is unique
 
