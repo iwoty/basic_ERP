@@ -162,3 +162,16 @@ def print_error_message(message):
 
     '''
     print(message)
+
+
+def print_string(string):
+    '''Prints given string.
+
+    Args:
+        string (str): string
+
+    Returns:
+        None
+
+    '''
+    print(string)

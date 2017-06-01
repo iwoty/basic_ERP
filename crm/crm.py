@@ -59,7 +59,7 @@ def choose():
     elif option == "2":
         add(table)
     elif option == "3":
-        remove(table, id_)
+        remove(table, ui.get_inputs(['Enter ID of record to remove it: '], ''))
     elif option == "4":
         update(table, id_)
     elif option == "5":
@@ -137,18 +137,26 @@ def add(table):
 # @table: list of lists
 # @id_: string
 def remove(table, id_):
-    '''???
+    '''Removing data
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
+        id_: id of item
 
     Returns:
-        ?????
+        table (nested list): with item of inputed id removed - saved to the file
 
     '''
-    # your code
-
+    i = 0
+    id_ = ''.join(id_)  # change element of the list to string
+    for row in table:
+        if id_ == row[0]:
+            table.pop(i)
+        else:
+            i += 1
+    if i == (len(table)):
+        ui.print_string('There is no such ID.')
+    data_manager.write_table_to_file('crm/customers.csv', table)
     return table
 
 
