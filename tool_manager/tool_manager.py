@@ -125,12 +125,16 @@ def add(table):
         table (nested list): with added item
 
     '''
-    list_labels = ['Enter name: ', 'Enter manufacturer: ', 'Enter purchase date (year): ',
+    list_labels = ['Enter name: ', 
+                   'Enter manufacturer: ', 
+                   'Enter purchase date (year): ',
                    'Enter durability (year(s)): ']
+
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
     data_manager.write_table_to_file('tool_manager/tools.csv', table)
+    
     return table
 
 
@@ -151,6 +155,7 @@ def remove(table, id_):
     '''
     i = 0
     id_ = ''.join(id_)  # change element of the list to string
+    
     for row in table:
         if id_ == row[0]:
             table.pop(i)
@@ -158,7 +163,9 @@ def remove(table, id_):
             i += 1
     if i == (len(table)):
         ui.print_string('There is no such ID.')
+    
     data_manager.write_table_to_file('tool_manager/tools.csv', table)
+    
     return table
 
 
@@ -181,12 +188,16 @@ def update(table, id_):
     id_to_keep = id_
     remove(table, id_)
 
-    list_labels = ['Enter name: ', 'Enter manufacturer: ', 'Enter purchase date (year): ',
+    list_labels = ['Enter name: ',
+                   'Enter manufacturer: ', 
+                   'Enter purchase date (year): ',
                    'Enter durability (year(s)): ']
+    
     inputs = [id_to_keep]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
     data_manager.write_table_to_file('tool_manager/tools.csv', table)
+    
     return table
 
 
