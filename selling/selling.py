@@ -67,10 +67,10 @@ def choose():
         update(table, id_)
     elif option == "5":
         lowest_price_product_id = get_lowest_price_item_id(table)
-        ui.print_result(lowest_price_product_id, 'ID of lowest price product')     
+        ui.print_result(lowest_price_product_id, 'ID of lowest price product')
     elif option == "6":
         get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
-        # najpierw input potem print 
+        # najpierw input potem print
     elif option == "0":
         return 'back_to_main'
     else:
@@ -209,14 +209,19 @@ def get_lowest_price_item_id(table):
 # the question: Which items are sold between two given dates ? (from_date < birth_date < to_date)
 # return type: list of lists (the filtered table)
 def get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to):
-    '''???
+    '''Finds items sold between two given dates
 
     Args:
-        param1: ???
-        param2: ???
+        table: list of lists
+        month_from: int
+        day_from: int
+        year_from: int
+        month_to: int
+        day_to: int
+        year_to: int
 
     Returns:
-        ?????
+        sold: list of lists
 
     '''
     sold = []
