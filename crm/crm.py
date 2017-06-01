@@ -144,11 +144,19 @@ def remove(table, id_):
         id_: id of item
 
     Returns:
-        table (nested list): with item of inputed id removed
+        table (nested list): with item of inputed id removed - saved to the file
 
     '''
+    i = 0
+    id_ = ''.join(id_)  # change element of the list to string
     for row in table:
-        print(row)
+        if id_ == row[0]:
+            table.pop(i)
+        else:
+            i += 1
+    if i == (len(table)):
+        ui.print_string('There is no such ID.')
+    data_manager.write_table_to_file('crm/customers.csv', table)
     return table
 
 
