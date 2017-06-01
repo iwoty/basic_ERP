@@ -67,8 +67,10 @@ def choose():
         manufacturer_count = get_counts_by_manufacturers(table)
         ui.print_result(manufacturer_count, 'Name of manufacturers : amount of products')
     elif option == "6":
-        get_average_by_manufacturer(table, manufacturer)
-        #tutaj input manufacturer poznije print
+        manufacturer = ui.get_inputs(['Enter a manufacturer: '], '')
+        average = get_average_by_manufacturer(table, manufacturer)
+        ui.print_result(average, ('Average amount of games in stock by '+ ''.join(manufacturer)))
+
     elif option == "0":
         return 'back_to_main'
     else:
@@ -230,8 +232,11 @@ def get_average_by_manufacturer(table, manufacturer):
             counter += 1
             amount_in_shop = amount_in_shop + int(product[4])
 
-    average = amount_in_shop / counter
-
+    if counter == 0:
+        average = 'There is no ' + ''.join(manufacturer) + ' in table records '
+    else:
+        average = amount_in_shop / counter
+    
     return average
 
 # table = data_manager.get_table_from_file('games.csv')
