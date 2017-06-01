@@ -1,5 +1,5 @@
 # data structure:
-# kH14Ju#&;1;21;2016;in;31
+# kH14Ju#&;1;21;2013;in;31
 # id: string
 #     Unique and random generated (at least 2 special char()expect: ';'), 2 number, 2 lower and 2 upper case letter)
 # month: number
@@ -190,28 +190,23 @@ def sum_profits(year, table):
         year: int
     '''
     sum_profit_in = 0
+    sum_profit_out = 0
     sum_in = []
+    sum_out = []
+
     for line in table:
 
         line[5] = int(line[5])
 
         if int(line[3]) == int(year) and line[4] == 'in':
-
             sum_in.append(line[5])
+            for i in sum_in:
+                sum_profit_in += i
 
-    for i in sum_in:
-        sum_profit_in += i
-
-
-    sum_profit_out = 0
-    sum_out = []
-    for line in table:
-        line[5] = int(line[5])
         if int(line[3]) == int(year) and line[4] == 'out':
             sum_out.append(line[5])
-
-    for i in sum_out:
-        sum_profit_out += i
+            for i in sum_out:
+                sum_profit_out += i
 
     profit = sum_profit_in - sum_profit_out
 
@@ -234,7 +229,6 @@ def which_year_max(table):
     for line in table:
         if not int(line[3]) in years:
             years.append(int(line[3]))
-
 
     profits = []
 
