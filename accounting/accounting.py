@@ -71,7 +71,6 @@ def choose():
     elif option == "6":
         year = ''.join(ui.get_inputs(['Enter a year to know the average profit: '], ''))
         profit = avg_amount(table, year)
-        print()
         ui.print_result(profit, 'Profit in '+ year + ' year' )
     elif option == "0":
         return 'back_to_main'
@@ -296,6 +295,6 @@ def avg_amount(table, year):
     if count == 0:
         return None
     else:
-        avr_profit = profit // count
+        avr_profit = profit / count
 
     return avr_profit
