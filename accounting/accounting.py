@@ -69,8 +69,7 @@ def choose():
         max_year = which_year_max(table)
         ui.print_result(max_year, 'Year with the highest profit')
     elif option == "6":
-        avg_amount(table, year)
-        # tutaj inputy a poznije print
+        avg_amount(table, ui.get_inputs(['Enter a year to know the average profit: '], ''))
     elif option == "0":
         return 'back_to_main'
     else:
