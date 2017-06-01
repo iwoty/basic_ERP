@@ -64,7 +64,7 @@ def choose():
     elif option == "3":
         remove(table, ui.get_inputs(['Enter ID of record to remove it: '], ''))
     elif option == "4":
-        update(table, id_)
+        update(table, ui.get_inputs(['Enter ID of record to update it: '], ''))
     elif option == "5":
         lowest_price_product_id = get_lowest_price_item_id(table)
         ui.print_result(lowest_price_product_id, 'ID of lowest price product')
@@ -144,7 +144,7 @@ def remove(table, id_):
 
     Args:
         table (nested list): table with data
-        id_: id of item
+        id_ (string): id of item
 
     Returns:
         table (nested list): with item of inputed id removed - saved to the file
@@ -159,7 +159,7 @@ def remove(table, id_):
             i += 1
     if i == (len(table)):
         ui.print_string('There is no such ID.')
-    data_manager.write_table_to_file('crm/customers.csv', table)
+    data_manager.write_table_to_file('selling/sellings.csv', table)
     return table
 
 
@@ -169,18 +169,24 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
-    '''???
+    '''Updating an item by removing its values and adding new ones.
 
     Args:
-        param1: ???
-        param2: ???
+        table (nested list): table with data
+        id_ (string): id of item
 
     Returns:
-        ?????
+        table (nested list): with item of inputed id removed - saved to the file
 
     '''
-    # your code
+    id_to_keep = id_
+    remove(table, id_)
 
+    list_labels = ['Enter title: ', 'Enter price: ', 'Enter month: ', 'Enter day: ', 'Enter year: ']
+    inputs = [id_to_keep]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
+    data_manager.write_table_to_file('selling/sellings.csv', table)
     return table
 
 
