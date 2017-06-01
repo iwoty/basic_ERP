@@ -179,14 +179,13 @@ def update(table, id_):
 # return type: list of strings (name or names if there are two more with the same value)
 
 def get_oldest_person(table):
-    '''???
+    '''Finds the oldest people 
 
     Args:
-        param1: ???
-        param2: ???
+        table:list of lists
 
     Returns:
-        ?????
+        oldest_person: list of strings
     '''
 
     age = []
@@ -206,14 +205,13 @@ def get_oldest_person(table):
 # the question: Who is the closest to the average age ?
 # return type: list of strings (name or names if there are two more with the same value)
 def get_persons_closest_to_average(table):
-    '''???
+    '''Finds people with an age closest to the average
 
     Args:
-        param1: ???
-        param2: ???
+        table: list of lists
 
     Returns:
-        ?????
+        close_to_ave: list of strings
 
     '''
     average_age = []

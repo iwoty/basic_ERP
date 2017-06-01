@@ -147,8 +147,8 @@ def remove(table, id_):
         table (nested list): with item of inputed id removed
 
     '''
-    for
-
+    for row in table:
+        print(row)
     return table
 
 

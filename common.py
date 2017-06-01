@@ -39,3 +39,11 @@ def generate_random(table):
                          + chr(random.randint(48, 57)) + chr(random.randint(65, 90)) + chr(random.randint(97, 122))
                          + random.choice(special_char) + random.choice(special_char))
     return generated
+
+
+def str_to_int_in(table):
+    for sign in table:
+        sign[-1] = int(sign[-1])
+        sign[-2] = int(sign[-2])
+
+    return table

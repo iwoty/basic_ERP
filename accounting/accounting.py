@@ -1,5 +1,5 @@
 # data structure:
-# kH14Ju#&;1;21;2016;in;31
+# kH14Ju#&;1;21;2013;in;31
 # id: string
 #     Unique and random generated (at least 2 special char()expect: ';'), 2 number, 2 lower and 2 upper case letter)
 # month: number
@@ -66,10 +66,11 @@ def choose():
     elif option == "4":
         update(table, id_)
     elif option == "5":
-        which_year_max(table)
+        max_year = which_year_max(table)
+        ui.print_result(max_year, 'Year with the highest profit')
     elif option == "6":
-        year = input("year:")
         avg_amount(table, year)
+        # tutaj inputy a poznije print
     elif option == "0":
         return 'back_to_main'
     else:
@@ -178,24 +179,32 @@ def update(table, id_):
 # special functions:
 # ------------------
 def sum_profits(year, table):
+    '''Sums incomes, outcomes and calculates a profit
+
+    Args:
+        year: int
+        table: list of lists
+
+    Returns:
+        profit: int
+        year: int
+    '''
     sum_profit_in = 0
+    sum_profit_out = 0
     sum_in = []
+    sum_out = []
+
     for line in table:
+
         line[5] = int(line[5])
-        if line[3] == year and line[4] == 'in':
 
+        if int(line[3]) == int(year) and line[4] == 'in':
             sum_in.append(line[5])
-
             for i in sum_in:
                 sum_profit_in += i
 
-    sum_profit_out = 0
-    sum_out = []
-    for line in table:
-        line[5] = int(line[5])
-        if line[3] == year and line[4] == 'out':
+        if int(line[3]) == int(year) and line[4] == 'out':
             sum_out.append(line[5])
-
             for i in sum_out:
                 sum_profit_out += i
 
@@ -207,24 +216,24 @@ def sum_profits(year, table):
 # the question: Which year has the highest profit? (profit=in-out)
 # return the answer (number)
 def which_year_max(table):
-    '''???
+    '''Finds a year with the highest profit
 
     Args:
-        param1: ???
-        param2: ???
+        table: list of lists
 
     Returns:
-        ?????
+        max_profit_year: int
 
     '''
     years = []
     for line in table:
-        if not line[3] in years:
-            years.append(line[3])
+        if not int(line[3]) in years:
+            years.append(int(line[3]))
 
     profits = []
 
     for i in range(len(years)):
+
         profits.append(sum_profits(years[i], table))
 
     max_profit = max([tupl[0] for tupl in profits])
@@ -233,29 +242,41 @@ def which_year_max(table):
         if tupl[0] == max_profit:
             max_profit_year = tupl[1]
 
-    print(max_profit_year)
+    max_profit_year = int(max_profit_year)
+
     return max_profit_year
 
 
 # the question: What is the average (per item) profit in a given year? [(profit)/(items count) ]
 # return the answer (number)
 def avg_amount(table, year):
-    '''???
+    '''Counts the average profit for a given year
     Args:
-        param1: ???
-        param2: ???
+        tabel : list of lists
+        year : int
 
     Returns:
-        ?????
+        avr_profit : int
 
     '''
-    profit, year = sum_profits(year, table)
-    print(profit)
-    amount = 0
 
-    for line in table:
-        if line[3] == year:
-            amount += 1
-    average = profit / amount
-    print(average)
-    return average
+    count = 0
+    sum_in = 0
+    sum_out = 0
+
+    for information in table:
+        if int(information[-3]) == year:
+            count += 1
+            if information[-2] == 'in':
+                sum_in = sum_in + int(information[-1])
+            elif information[-2] == 'out':
+                sum_out = sum_out + int(information[-1])
+
+    profit = sum_in - sum_out
+
+    if count == 0:
+        return None
+    else:
+        avr_profit = profit / count
+
+    return avr_profit
