@@ -62,14 +62,14 @@ def choose():
     elif option == "3":
         remove(table, ui.get_inputs(['Enter ID of record to remove it: '], ''))
     elif option == "4":
-        update(table, ui.get_inputs(['Enter ID of record to update it: '], ''))
+        update(table, id_)
     elif option == "5":
         manufacturer_count = get_counts_by_manufacturers(table)
         ui.print_result(manufacturer_count, 'Name of manufacturers : amount of products')
     elif option == "6":
-        manufacturer = ui.get_inputs(['Enter a manufacturer: '], '')
+        manufacturer = ''.join(ui.get_inputs(['Enter a manufacturer: '], ''))
         average = get_average_by_manufacturer(table, manufacturer)
-        ui.print_result(average, ('Average amount of games in stock by '+ ''.join(manufacturer)))
+        ui.print_result(average, ('Average amount of games in stock by '+ manufacturer))
 
     elif option == "0":
         return 'back_to_main'
@@ -144,7 +144,7 @@ def remove(table, id_):
 
     Args:
         table (nested list): table with data
-        id_ (string): id of item
+        id_: id of item
 
     Returns:
         table (nested list): with item of inputed id removed - saved to the file
@@ -159,7 +159,7 @@ def remove(table, id_):
             i += 1
     if i == (len(table)):
         ui.print_string('There is no such ID.')
-    data_manager.write_table_to_file('store/games.csv', table)
+    data_manager.write_table_to_file('crm/customers.csv', table)
     return table
 
 
@@ -169,24 +169,18 @@ def remove(table, id_):
 # @table: list of lists
 # @id_: string
 def update(table, id_):
-    '''Updating an item by removing its values and adding new ones.
+    '''???
 
     Args:
-        table (nested list): table with data
-        id_ (string): id of item
+        param1: ???
+        param2: ???
 
     Returns:
-        table (nested list): with item of inputed id removed - saved to the file
+        ?????
 
     '''
-    id_to_keep = id_
-    remove(table, id_)
+    # your code
 
-    list_labels = ['Enter title: ', 'Enter manufacturer: ', 'Enter price: ', 'In_stock: ']
-    inputs = [id_to_keep]
-    inputs += ui.get_inputs(list_labels, '')
-    table.append(inputs)
-    data_manager.write_table_to_file('store/games.csv', table)
     return table
 
 
@@ -234,17 +228,14 @@ def get_average_by_manufacturer(table, manufacturer):
     amount_in_shop = 0
 
     for product in table:
-        if product[2] == manufacturer:
+        if product[2].upper() == manufacturer.upper():
             counter += 1
             amount_in_shop = amount_in_shop + int(product[4])
 
     if counter == 0:
-        average = 'There is no ' + ''.join(manufacturer) + ' in table records '
+        average = 'There is no ' + manufacturer + ' in table records '
     else:
         average = amount_in_shop / counter
-    
+
     return average
 
-# table = data_manager.get_table_from_file('games.csv')
-# get_average_by_manufacturer(table, 'Ensemble Studios')
-# # get_counts_by_manufacturers(table)
