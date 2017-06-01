@@ -242,7 +242,7 @@ def get_average_by_manufacturer(table, manufacturer):
         average = 'There is no ' + ''.join(manufacturer) + ' in table records '
     else:
         average = amount_in_shop / counter
-    
+
     return average
 
 # table = data_manager.get_table_from_file('games.csv')
