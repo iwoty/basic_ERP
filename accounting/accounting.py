@@ -71,7 +71,7 @@ def choose():
     elif option == "6":
         year = ''.join(ui.get_inputs(['Enter a year to know the average profit: '], ''))
         while not year.isdigit():
-            year = ''.join(ui.get_inputs(['Enter a year to know the average profit: '], ''))
+            year = ''.join(ui.get_inputs(['Is it a proper year? '], ''))
         profit = avg_amount(table, year)
         ui.print_result(profit, 'Profit in ' + year + ' year')
     elif option == "0":
