@@ -77,21 +77,15 @@ def print_result(result, label):
         for content in result:
             if type(content) == list:
                 for inner_content in content:
-                    print(inner_content, end = ' ')
+                    print(inner_content, end=' ')
                 print()
             else:
                 print(content)
 
-
     elif type(result) == dict:
-
         longest_name = max(len(key) for key in result.keys())
-
         for key, value in result.items():
-
-            print('{:{width}} {:3}'.format(key, value, width = longest_name))
-
-
+            print('{:{width}} {:3}'.format(key, value, width=longest_name))
     print('')
 
 

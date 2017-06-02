@@ -137,6 +137,7 @@ def add(table):
                    'Enter amount: ']
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
+
     table.append(inputs)
     data_manager.write_table_to_file('accounting/items.csv', table)
     return table
