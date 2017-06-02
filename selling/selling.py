@@ -134,16 +134,16 @@ def add(table):
 
     '''
     list_labels = ['Enter title: ',
-                   'Enter price: ', 
-                   'Enter month: ', 
-                   'Enter day: ', 
+                   'Enter price: ',
+                   'Enter month: ',
+                   'Enter day: ',
                    'Enter year: ']
 
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
     data_manager.write_table_to_file('selling/sellings.csv', table)
-    
+
     return table
 
 
@@ -164,17 +164,18 @@ def remove(table, id_):
     '''
     i = 0
     id_ = ''.join(id_)  # change element of the list to string
-    
+
     for row in table:
         if id_ == row[0]:
             table.pop(i)
+            i += 2
         else:
             i += 1
-    
-    if i == (len(table)):
+
+    if i == len(table):
         ui.print_string('There is no such ID.')
     data_manager.write_table_to_file('selling/sellings.csv', table)
-    
+
     return table
 
 
@@ -231,8 +232,7 @@ def get_lowest_price_item_id(table):
 
     for information in table:
         if information[2] == lowest_price:
-            return information[0] # ID
-
+            return information[0]   # ID
 
 
 # the question: Which items are sold between two given dates ? (from_date < birth_date < to_date)

@@ -123,7 +123,8 @@ def add(table):
         table (nested list): with added item
 
     '''
-    list_labels = ['Enter name: ', 'Enter birthdate (year): ']
+    list_labels = ['Enter name: ',
+                   'Enter birthdate (year): ']
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
@@ -151,9 +152,10 @@ def remove(table, id_):
     for row in table:
         if id_ == row[0]:
             table.pop(i)
+            i += 2
         else:
             i += 1
-    if i == (len(table)):
+    if i == len(table):
         ui.print_string('There is no such ID.')
     data_manager.write_table_to_file('hr/persons.csv', table)
     return table
@@ -178,7 +180,8 @@ def update(table, id_):
     id_to_keep = id_
     remove(table, id_)
 
-    list_labels = ['Enter name: ', 'Enter birthdate (year): ']
+    list_labels = ['Enter name: ',
+                   'Enter birthdate (year): ']
     inputs = [id_to_keep]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
@@ -215,6 +218,7 @@ def get_oldest_person(table):
             oldest_person.append(lista[1])
 
     return oldest_person
+
 
 # the question: Who is the closest to the average age ?
 # return type: list of strings (name or names if there are two more with the same value)

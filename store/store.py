@@ -127,7 +127,10 @@ def add(table):
         table (nested list): with added item
 
     '''
-    list_labels = ['Enter title: ', 'Enter manufacturer: ', 'Enter price: ', 'In_stock: ']
+    list_labels = ['Enter title: ',
+                   'Enter manufacturer: ',
+                   'Enter price: ',
+                   'In_stock: ']
     inputs = [common.generate_random(table)]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
@@ -155,9 +158,10 @@ def remove(table, id_):
     for row in table:
         if id_ == row[0]:
             table.pop(i)
+            i += 2
         else:
             i += 1
-    if i == (len(table)+1):
+    if i == len(table):
         ui.print_string('There is no such ID.')
     data_manager.write_table_to_file('store/games.csv', table)
     return table
@@ -182,7 +186,10 @@ def update(table, id_):
     id_to_keep = id_
     remove(table, id_)
 
-    list_labels = ['Enter month: ', 'Enter day: ', 'Enter year: ', 'Enter type (in/out): ', 'Enter amount: ']
+    list_labels = ['Enter title: ',
+                   'Enter manufacturer: ',
+                   'Enter price: ',
+                   'In_stock: ']
     inputs = [id_to_keep]
     inputs += ui.get_inputs(list_labels, '')
     table.append(inputs)
