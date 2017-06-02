@@ -70,8 +70,10 @@ def choose():
         ui.print_result(max_year, 'Year with the highest profit')
     elif option == "6":
         year = ''.join(ui.get_inputs(['Enter a year to know the average profit: '], ''))
+        while not year.isdigit():
+            year = ''.join(ui.get_inputs(['Enter a year to know the average profit: '], ''))
         profit = avg_amount(table, year)
-        ui.print_result(profit, 'Profit in '+ year + ' year' )
+        ui.print_result(profit, 'Profit in ' + year + ' year')
     elif option == "0":
         return 'back_to_main'
     else:
@@ -158,11 +160,10 @@ def remove(table, id_):
             table.pop(i)
         else:
             i += 1
-    if i == (len(table)):
+    if i == (len(table)+1):
         ui.print_string('There is no such ID.')
     data_manager.write_table_to_file('accounting/items.csv', table)
     return table
-
 
 
 # Update the record in @table having the id @id_ by asking the new data from the user,
@@ -170,7 +171,6 @@ def remove(table, id_):
 #
 # @table: list of lists
 # @id_: string
-
 def update(table, id_):
     '''Updating an item by removing its values and adding new ones.
 
@@ -191,7 +191,6 @@ def update(table, id_):
     table.append(inputs)
     data_manager.write_table_to_file('accounting/items.csv', table)
     return table
-
 
 
 # special functions:

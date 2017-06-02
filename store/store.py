@@ -69,7 +69,7 @@ def choose():
     elif option == "6":
         manufacturer = ''.join(ui.get_inputs(['Enter a manufacturer: '], ''))
         average = get_average_by_manufacturer(table, manufacturer)
-        ui.print_result(average, ('Average amount of games in stock by '+ manufacturer))
+        ui.print_result(average, ('Average amount of games in stock by ' + manufacturer))
 
     elif option == "0":
         return 'back_to_main'
@@ -144,35 +144,6 @@ def remove(table, id_):
 
     Args:
         table (nested list): table with data
-        id_: id of item
-
-    Returns:
-        table (nested list): with item of inputed id removed - saved to the file
-
-    '''
-    i = 0
-    id_ = ''.join(id_)  # change element of the list to string
-    for row in table:
-        if id_ == row[0]:
-            table.pop(i)
-        else:
-            i += 1
-    if i == (len(table)):
-        ui.print_string('There is no such ID.')
-    data_manager.write_table_to_file('crm/customers.csv', table)
-    return table
-
-
-# Update the record in @table having the id @id_ by asking the new data from the user,
-# than return @table
-#
-# @table: list of lists
-# @id_: string
-def update(table, id_):
-    '''Removing data
-
-    Args:
-        table (nested list): table with data
         id_ (string): id of item
 
     Returns:
@@ -186,8 +157,35 @@ def update(table, id_):
             table.pop(i)
         else:
             i += 1
-    if i == (len(table)):
+    if i == (len(table)+1):
         ui.print_string('There is no such ID.')
+    data_manager.write_table_to_file('store/games.csv', table)
+    return table
+
+
+# Update the record in @table having the id @id_ by asking the new data from the user,
+# than return @table
+#
+# @table: list of lists
+# @id_: string
+def update(table, id_):
+    '''Updating an item by removing its values and adding new ones.
+
+    Args:
+        table (nested list): table with data
+        id_ (string): id of item
+
+    Returns:
+        table (nested list): with item of inputed id removed - saved to the file
+
+    '''
+    id_to_keep = id_
+    remove(table, id_)
+
+    list_labels = ['Enter month: ', 'Enter day: ', 'Enter year: ', 'Enter type (in/out): ', 'Enter amount: ']
+    inputs = [id_to_keep]
+    inputs += ui.get_inputs(list_labels, '')
+    table.append(inputs)
     data_manager.write_table_to_file('store/games.csv', table)
     return table
 
@@ -246,4 +244,3 @@ def get_average_by_manufacturer(table, manufacturer):
         average = amount_in_shop / counter
 
     return average
-
