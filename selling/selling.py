@@ -69,13 +69,43 @@ def choose():
         lowest_price_product_id = get_lowest_price_item_id(table)
         ui.print_result(lowest_price_product_id, 'ID of lowest price product')
     elif option == "6":
-        month_from = int(''.join(ui.get_inputs(['From month: '], '')))
-        day_from = int(''.join(ui.get_inputs(['From day: '], '')))
-        year_from = int(''.join(ui.get_inputs(['From year: '], '')))
-        month_to = int(''.join(ui.get_inputs(['To month: '], '')))
-        day_to = int(''.join(ui.get_inputs(['To day: '], '')))
-        year_to = int(''.join(ui.get_inputs(['To year: '], '')))
-        sold_between = get_items_sold_between(table, month_from, day_from, year_from, month_to, day_to, year_to)
+        month_from = ''.join(ui.get_inputs(['From month: '], ''))
+        while not (month_from.isdigit() and int(month_from) in range(1, 13)):
+            ui.print_string('Is it a proper month?')
+            month_from = ''.join(ui.get_inputs(['From month: '], ''))
+
+        day_from = ''.join(ui.get_inputs(['From day: '], ''))
+        while not (day_from.isdigit() and int(day_from) in range(1, 32)):
+            ui.print_string('Is it a proper day?')
+            day_from = ''.join(ui.get_inputs(['From day: '], ''))
+
+        year_from = ''.join(ui.get_inputs(['From year: '], ''))
+        while not year_from.isdigit():
+            ui.print_string('Is it a proper year?')
+            year_from = ''.join(ui.get_inputs(['From year: '], ''))
+
+        month_to = ''.join(ui.get_inputs(['To month: '], ''))
+        while not (month_to.isdigit() and int(month_to) in range(1, 13)):
+            ui.print_string('Is it a proper month?')
+            month_to = ''.join(ui.get_inputs(['To month: '], ''))
+
+        day_to = ''.join(ui.get_inputs(['To day: '], ''))
+        while not (day_to.isdigit() and int(day_to) in range(1, 32)):
+            ui.print_string('Is it a proper day?')
+            day_to = ''.join(ui.get_inputs(['To day: '], ''))
+
+        year_to = ''.join(ui.get_inputs(['To year: '], ''))
+        while not year_to.isdigit():
+            ui.print_string('Is it a proper year?')
+            year_to = ''.join(ui.get_inputs(['To year: '], ''))
+
+        sold_between = get_items_sold_between(table,
+                                              int(month_from),
+                                              int(day_from),
+                                              int(year_from),
+                                              int(month_to),
+                                              int(day_to),
+                                              int(year_to))
         ui.print_result(sold_between, 'Products sold in given period')
     elif option == "0":
         return 'back_to_main'
